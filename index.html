@@ -70,31 +70,6 @@
       -webkit-mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
     }
 
-    .ambient-sphere {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(100px);
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.6;
-    }
-
-    .sphere-1 {
-      top: -100px;
-      left: 15%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.12), rgba(99, 102, 241, 0.04), transparent 70%);
-    }
-
-    .sphere-2 {
-      top: 45%;
-      right: -80px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(192, 132, 252, 0.1), rgba(56, 189, 248, 0.03), transparent 70%);
-    }
-
     canvas#particle-canvas {
       position: fixed;
       top: 0; left: 0;
@@ -165,22 +140,28 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
       color: var(--text-primary);
     }
 
-    .brand-logo-img {
-      height: 24px;
-      width: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.4));
+    .brand-monogram {
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
     }
 
-    .brand-name {
-      font-weight: 800;
-      font-size: 16px;
-      letter-spacing: -0.4px;
+    .brand-sub {
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 13px;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      padding-left: 10px;
     }
 
     .nav-links {
@@ -618,8 +599,6 @@
 </head>
 <body>
   <div class="bg-grid"></div>
-  <div class="ambient-sphere sphere-1"></div>
-  <div class="ambient-sphere sphere-2"></div>
   <canvas id="particle-canvas"></canvas>
 
   <div class="container">
@@ -627,8 +606,8 @@
     <nav>
       <div class="nav-glass">
         <a href="#" class="brand">
-          <img src="assets/logo-icon.svg" alt="Zyr3x Logo" class="brand-logo-img">
-          <span class="brand-name">zyr3x<span style="color: var(--cyan);">.</span> <span style="color: var(--text-muted); font-weight: 400; font-size: 13px;">| Oleg Semenov</span></span>
+          <span class="brand-monogram">ZRX<span style="color: var(--cyan);">.</span></span>
+          <span class="brand-sub">Oleg Semenov</span>
         </a>
         <div class="nav-links">
           <a href="#platforms" class="nav-item">Platforms</a>
