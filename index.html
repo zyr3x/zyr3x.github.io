@@ -147,10 +147,18 @@
 
     .brand-monogram {
       font-family: var(--font-mono);
-      font-weight: 800;
-      font-size: 18px;
+      font-weight: 900;
+      font-size: 19px;
       letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+      background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 22%, #94a3b8 48%, #ffffff 52%, #64748b 80%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.9));
+    }
+
+    .metal-hull-text {
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 30%, #94a3b8 48%, #ffffff 52%, #64748b 85%, #cbd5e1 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
@@ -630,7 +638,7 @@
         <span>Executive Architecture &amp; AI Engineering</span>
       </div>
       <h1>
-        Architecting <span style="background: linear-gradient(90deg, #38bdf8 0%, #c084fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Autonomous Intelligence</span> &amp; Enterprise Systems.
+        Architecting <span class="metal-hull-text">Autonomous Intelligence</span> &amp; Enterprise Systems.
       </h1>
       <p class="hero-lead">
         <strong>Oleg Semenov (@zyr3x)</strong> — Chief Technology Officer (CTO) @ <a href="https://belvg.com" target="_blank" style="color: var(--orange); text-decoration: none; font-weight: 700;">BelVG</a> and Head of AI Software Engineering based in Riga, Latvia. Over 15 years architecting mission-critical eCommerce ecosystems, Model Context Protocol (MCP) toolchains, and multi-agent AI networks.
