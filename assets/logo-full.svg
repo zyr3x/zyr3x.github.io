@@ -22,24 +22,20 @@
     .sub-text { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-weight: 600; font-size: 11px; fill: #38bdf8; letter-spacing: 3px; text-transform: uppercase; }
   </style>
 
-  <!-- Left Icon Monogram -->
-  <g transform="translate(10, 10) scale(0.235)">
-    <!-- Base -->
-    <rect width="512" height="512" rx="110" fill="#0b101d" stroke="rgba(255,255,255,0.12)" stroke-width="6" />
-    
-    <!-- Z Monogram -->
-    <path d="M 120 148 L 368 148 L 392 196 L 208 196 L 144 196 Z" fill="url(#fullCyberGrad)" />
-    <path d="M 120 148 L 368 148 L 340 160 L 144 160 Z" fill="#ffffff" fill-opacity="0.6" />
-    <polygon points="392,196 232,316 120,316 280,196" fill="url(#fullCyberGrad)" />
-    <path d="M 120 316 L 144 364 L 392 364 L 368 316 Z" fill="url(#fullCyberGrad)" />
+  <!-- Left Icon Monogram (Transparent) -->
+  <g transform="translate(10, 8) scale(0.245)">
+    <path d="M 100 136 L 388 136 L 416 192 L 196 192 L 128 192 Z" fill="url(#fullCyberGrad)" />
+    <path d="M 100 136 L 388 136 L 356 150 L 128 150 Z" fill="#ffffff" fill-opacity="0.6" />
+    <polygon points="416,192 232,328 100,328 284,192" fill="url(#fullCyberGrad)" />
+    <path d="M 100 328 L 128 384 L 416 384 L 388 328 Z" fill="url(#fullCyberGrad)" />
     
     <!-- Nexus Core -->
-    <polygon points="256,236 276,256 256,276 236,256" fill="#ff6b00" filter="url(#logoGlow)" />
+    <polygon points="256,234 278,256 256,278 234,256" fill="#ff6b00" filter="url(#logoGlow)" />
     <circle cx="256" cy="256" r="5" fill="#ffffff" />
   </g>
 
   <!-- Typography Wordmark -->
-  <g transform="translate(150, 68)">
+  <g transform="translate(144, 68)">
     <text x="0" y="0" class="brand-text">ZYR3X<tspan fill="#38bdf8">.</tspan></text>
     <text x="2" y="26" class="sub-text">CTO @ BELVG • AI SYSTEMS ARCHITECT</text>
   </g>
