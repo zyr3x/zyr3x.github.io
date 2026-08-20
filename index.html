@@ -2,71 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>OLEG SEMENOV — CTO &amp; Chief AI Systems Architect</title>
-  <meta name="description" content="Executive portfolio of Oleg Semenov (@zyr3x) — CTO @ BelVG, Architect of Autonomous AI Swarms, MCP Infrastructure, and Enterprise High-Load Ecosystems.">
-
-  <!-- Typography -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oleg Semenov — CTO &amp; Head of AI Software Engineering</title>
+  <meta name="description" content="Executive portfolio of Oleg Semenov (@zyr3x) — CTO at BelVG, Enterprise Architect, and AI Systems Engineer with 15+ years of production experience.">
+  <link rel="icon" type="image/svg+xml" href="assets/logo-icon.svg">
+  
+  <!-- Typography: Inter & Fira Code -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800;900&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-  <!-- Three.js 3D WebGL Engine -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-deep: #03060a;
-      --card-glass: rgba(10, 15, 26, 0.65);
-      --card-hover: rgba(16, 24, 42, 0.85);
+      --bg-base: #06090f;
+      --bg-glass: rgba(13, 17, 28, 0.75);
+      --bg-glass-card: rgba(15, 20, 34, 0.65);
+      --bg-glass-hover: rgba(22, 30, 48, 0.85);
       
-      --border-line: rgba(255, 255, 255, 0.08);
-      --border-highlight: rgba(56, 189, 248, 0.4);
+      --border-glass: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(56, 189, 248, 0.35);
 
-      --text-white: #f8fafc;
-      --text-gray: #94a3b8;
-      --text-dark: #64748b;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
 
       --cyan: #38bdf8;
-      --blue: #3b82f6;
-      --purple: #a855f7;
-      --fuchsia: #d946ef;
-      --emerald: #10b981;
-      --amber: #f59e0b;
-      --belvg-orange: #ff6b00;
+      --blue: #58a6ff;
+      --purple: #c084fc;
+      --emerald: #34d399;
+      --amber: #fbbf24;
+      --orange: #ff6b00;
 
-      --font-display: 'Syne', sans-serif;
-      --font-ui: 'Space Grotesk', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-font-smoothing: antialiased;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-base);
     }
 
     body {
-      background: var(--bg-deep);
-      color: var(--text-white);
-      font-family: var(--font-ui);
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      line-height: 1.5;
       position: relative;
     }
 
-    /* Cinematic Film Grain Overlay */
-    .film-grain {
+    /* Ambient Glass Background */
+    .bg-grid {
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+      background-image: 
+        linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 56px 56px;
       pointer-events: none;
-      z-index: 99;
+      z-index: 0;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
+      -webkit-mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
     }
 
-    /* 3D WebGL Canvas */
-    #webgl-universe {
+    .ambient-sphere {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    .sphere-1 {
+      top: -100px;
+      left: 15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.12), rgba(99, 102, 241, 0.04), transparent 70%);
+    }
+
+    .sphere-2 {
+      top: 45%;
+      right: -80px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(192, 132, 252, 0.1), rgba(56, 189, 248, 0.03), transparent 70%);
+    }
+
+    canvas#particle-canvas {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
@@ -74,110 +101,83 @@
       pointer-events: none;
     }
 
-    /* Cursor Spotlight */
-    #cursor-light {
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(168, 85, 247, 0.03) 40%, transparent 70%);
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-      transition: opacity 0.3s;
-    }
-
-    .wrapper {
-      max-width: 1280px;
+    .container {
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0 28px;
+      padding: 0 24px;
       position: relative;
-      z-index: 10;
+      z-index: 1;
     }
 
-    /* Top HUD Navigation */
-    header {
+    /* Floating Frosted Glass Navigation */
+    nav {
       position: sticky;
-      top: 24px;
+      top: 20px;
       z-index: 100;
-      margin-bottom: 72px;
+      margin-bottom: 56px;
     }
 
-    .nav-hud {
+    .nav-glass {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 28px;
-      background: rgba(8, 12, 22, 0.7);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      border: 1px solid var(--border-line);
+      padding: 12px 24px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border-glass);
       border-radius: 100px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: border-color 0.25s;
     }
 
-    .nav-logo {
+    .nav-glass:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       text-decoration: none;
-      color: #fff;
+      color: var(--text-primary);
     }
 
-    .logo-badge {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--cyan), var(--fuchsia));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-mono);
+    .brand-logo-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+    }
+
+    .brand-name {
       font-weight: 800;
       font-size: 16px;
-      color: #000;
-      box-shadow: 0 0 24px rgba(56, 189, 248, 0.5);
+      letter-spacing: -0.4px;
     }
 
-    .logo-title {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 18px;
-      letter-spacing: -0.5px;
-    }
-
-    .nav-center {
+    .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 24px;
     }
 
-    .nav-link {
-      color: var(--text-gray);
+    .nav-item {
+      color: var(--text-secondary);
       text-decoration: none;
       font-size: 13px;
       font-weight: 600;
-      letter-spacing: 0.3px;
-      transition: all 0.2s;
+      transition: color 0.2s;
     }
-    .nav-link:hover {
-      color: var(--cyan);
-      text-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
-    }
+    .nav-item:hover { color: var(--cyan); }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .live-status {
+    .status-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 6px 14px;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.35);
+      background: rgba(52, 211, 153, 0.1);
+      border: 1px solid rgba(52, 211, 153, 0.3);
       border-radius: 100px;
       color: var(--emerald);
       font-family: var(--font-mono);
@@ -186,45 +186,26 @@
       letter-spacing: 0.5px;
     }
 
-    .live-dot {
+    .status-beacon {
       width: 7px;
       height: 7px;
       border-radius: 50%;
       background: var(--emerald);
-      box-shadow: 0 0 12px var(--emerald);
-      animation: live-pulse 2s infinite ease-in-out;
+      box-shadow: 0 0 10px var(--emerald);
+      animation: pulse 2s infinite ease-in-out;
     }
 
-    @keyframes live-pulse {
+    @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.3; transform: scale(0.8); }
-    }
-
-    .sound-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-line);
-      color: var(--text-gray);
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 14px;
-      transition: all 0.2s;
-    }
-    .sound-btn:hover {
-      color: #fff;
-      border-color: var(--cyan);
+      50% { opacity: 0.3; transform: scale(0.75); }
     }
 
     /* Hero Section */
     .hero {
-      padding: 40px 0 80px;
+      padding: 32px 0 64px;
     }
 
-    .hero-hud-tag {
+    .hero-tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -232,194 +213,178 @@
       font-size: 12px;
       font-weight: 600;
       color: var(--cyan);
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       padding: 6px 14px;
       background: rgba(56, 189, 248, 0.08);
       border: 1px solid rgba(56, 189, 248, 0.2);
-      border-radius: 6px;
+      border-radius: 8px;
     }
 
-    .icon-inline {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero-h1 {
-      font-family: var(--font-display);
-      font-size: clamp(48px, 8vw, 96px);
+    .hero h1 {
+      font-size: clamp(40px, 6.5vw, 72px);
       font-weight: 900;
-      line-height: 0.98;
-      letter-spacing: -2.5px;
-      margin-bottom: 28px;
-      text-transform: uppercase;
-    }
-
-    .hero-gradient-clip {
-      background: linear-gradient(135deg, #ffffff 20%, var(--cyan) 60%, var(--purple) 100%);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+      background: linear-gradient(180deg, #ffffff 40%, #94a3b8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .hero-subtitle {
-      font-size: clamp(18px, 2.2vw, 24px);
-      color: var(--text-gray);
-      max-width: 920px;
-      line-height: 1.55;
-      margin-bottom: 44px;
+    .hero-lead {
+      font-size: clamp(17px, 2.2vw, 21px);
+      color: var(--text-secondary);
       font-weight: 400;
+      line-height: 1.55;
+      max-width: 880px;
+      margin-bottom: 36px;
       letter-spacing: -0.2px;
     }
 
-    .hero-subtitle strong {
-      color: #fff;
+    .hero-lead strong {
+      color: var(--text-primary);
       font-weight: 600;
     }
 
-    .hero-btns {
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 14px 28px;
-      border-radius: 14px;
-      font-weight: 700;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-weight: 600;
       font-size: 14px;
       text-decoration: none;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
-      letter-spacing: 0.2px;
     }
 
     .btn-belvg {
-      background: linear-gradient(135deg, rgba(255, 107, 0, 0.25), rgba(255, 107, 0, 0.1));
-      border: 1px solid rgba(255, 107, 0, 0.5);
+      background: rgba(255, 107, 0, 0.15);
       color: #ff9142;
-      box-shadow: 0 0 30px rgba(255, 107, 0, 0.2);
+      border: 1px solid rgba(255, 107, 0, 0.35);
+      box-shadow: 0 0 20px rgba(255, 107, 0, 0.15);
     }
     .btn-belvg:hover {
-      background: rgba(255, 107, 0, 0.35);
+      background: rgba(255, 107, 0, 0.25);
       color: #ffaa6e;
       transform: translateY(-2px);
-      box-shadow: 0 0 40px rgba(255, 107, 0, 0.4);
     }
 
     .btn-primary {
       background: #ffffff;
-      color: #03060a;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+      color: #06090f;
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
     }
     .btn-primary:hover {
       background: #e2e8f0;
       transform: translateY(-2px);
-      box-shadow: 0 0 45px rgba(255, 255, 255, 0.5);
     }
 
     .btn-glass {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-line);
-      color: #fff;
+      background: var(--bg-glass);
+      color: var(--text-primary);
+      border: 1px solid var(--border-glass);
       backdrop-filter: blur(16px);
     }
     .btn-glass:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--bg-glass-hover);
       border-color: var(--border-highlight);
       transform: translateY(-2px);
     }
 
-    /* Live Telemetry KPI Strip */
+    /* Key Telemetry KPI Strip */
     .kpi-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-bottom: 96px;
+      gap: 16px;
+      margin-bottom: 72px;
     }
 
-    .kpi-box {
-      background: var(--card-glass);
-      border: 1px solid var(--border-line);
-      border-radius: 18px;
-      padding: 28px;
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+    .kpi-card {
+      background: var(--bg-glass-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: all 0.3s;
       position: relative;
       overflow: hidden;
-      transition: all 0.3s;
     }
 
-    .kpi-box::before {
+    .kpi-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
     }
 
-    .kpi-box:hover {
+    .kpi-card:hover {
       border-color: var(--border-highlight);
-      transform: translateY(-3px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
     }
 
-    .kpi-num {
-      font-family: var(--font-display);
-      font-size: clamp(34px, 4vw, 48px);
-      font-weight: 900;
-      letter-spacing: -1.5px;
+    .kpi-val {
+      font-size: clamp(28px, 3.5vw, 38px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 6px;
       line-height: 1;
-      margin-bottom: 8px;
     }
 
-    .kpi-title {
+    .kpi-label {
+      font-size: 14px;
       font-weight: 700;
-      font-size: 15px;
-      color: #fff;
+      color: var(--text-primary);
       margin-bottom: 4px;
     }
 
     .kpi-sub {
       font-size: 12px;
-      color: var(--text-dark);
+      color: var(--text-muted);
       line-height: 1.4;
     }
 
-    /* Section Headers */
-    .section-head {
-      margin-bottom: 40px;
+    /* Section Headings */
+    .section-wrap {
+      margin-bottom: 32px;
     }
 
-    .section-num {
+    .section-tag {
       font-family: var(--font-mono);
       font-size: 12px;
       font-weight: 600;
       color: var(--cyan);
-      letter-spacing: 2.5px;
       text-transform: uppercase;
-      margin-bottom: 10px;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
     }
 
     .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(28px, 4vw, 44px);
+      font-size: clamp(24px, 3vw, 36px);
       font-weight: 800;
-      letter-spacing: -1px;
+      letter-spacing: -0.8px;
+      color: var(--text-primary);
     }
 
-    /* Bento Grid */
+    /* Bento Grid (Frosted Glass) */
     .bento-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 24px;
-      margin-bottom: 96px;
+      gap: 20px;
+      margin-bottom: 72px;
     }
 
     .col-8 { grid-column: span 8; }
@@ -428,138 +393,166 @@
     .col-12 { grid-column: span 12; }
 
     .bento-card {
-      background: var(--card-glass);
-      border: 1px solid var(--border-line);
-      border-radius: 24px;
-      padding: 40px;
+      background: var(--bg-glass-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      padding: 32px;
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      position: relative;
-      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
     }
 
     .bento-card:hover {
       border-color: var(--border-highlight);
-      transform: translateY(-4px);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(56, 189, 248, 0.1);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
     }
 
-    .card-badge {
+    .badge-pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
+      gap: 6px;
+      padding: 5px 12px;
       border-radius: 8px;
       font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 600;
-      margin-bottom: 24px;
+      margin-bottom: 18px;
       width: fit-content;
     }
 
-    .badge-orange { background: rgba(255, 107, 0, 0.15); color: #ff8c38; border: 1px solid rgba(255, 107, 0, 0.35); }
-    .badge-cyan { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); }
-    .badge-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.35); }
-    .badge-amber { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); }
-    .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.35); }
+    .badge-orange { background: rgba(255, 107, 0, 0.12); color: #ff8c38; border: 1px solid rgba(255, 107, 0, 0.3); }
+    .badge-cyan { background: rgba(56, 189, 248, 0.12); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .badge-purple { background: rgba(192, 132, 252, 0.12); color: #c084fc; border: 1px solid rgba(192, 132, 252, 0.3); }
+    .badge-amber { background: rgba(251, 191, 36, 0.12); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+    .badge-emerald { background: rgba(52, 211, 153, 0.12); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
 
     .bento-card h3 {
-      font-family: var(--font-display);
-      font-size: 26px;
+      font-size: 22px;
       font-weight: 800;
-      letter-spacing: -0.6px;
-      margin-bottom: 14px;
+      letter-spacing: -0.4px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .bento-card h3 a {
-      color: #fff;
+      color: var(--text-primary);
       text-decoration: none;
       transition: color 0.2s;
     }
     .bento-card:hover h3 a { color: var(--cyan); }
 
-    .bento-card p {
-      font-size: 15px;
-      color: var(--text-gray);
-      line-height: 1.65;
-      margin-bottom: 32px;
+    .bento-desc {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
     }
 
-    .pill-list {
+    .tag-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
 
-    .pill {
+    .glass-tag {
       background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-line);
-      color: var(--text-gray);
+      border: 1px solid var(--border-glass);
+      color: var(--text-secondary);
       font-size: 12px;
-      font-weight: 600;
-      padding: 6px 12px;
-      border-radius: 8px;
+      font-weight: 500;
+      padding: 5px 11px;
+      border-radius: 6px;
       font-family: var(--font-mono);
-      transition: all 0.2s;
+      transition: all 0.15s;
     }
 
-    .bento-card:hover .pill {
-      border-color: rgba(255, 255, 255, 0.15);
+    .bento-card:hover .glass-tag {
+      border-color: rgba(255, 255, 255, 0.12);
       color: #fff;
     }
 
-    /* Live Audio Frequency Simulator */
-    .audio-canvas-box {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--border-line);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 24px;
+    /* Complete Tech Stack Grid */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 72px;
+    }
+
+    .stack-glass {
+      background: var(--bg-glass-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: border-color 0.2s;
+    }
+
+    .stack-glass:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .stack-glass h4 {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-primary);
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 8px;
     }
 
-    .audio-bars {
+    .stack-items {
       display: flex;
-      align-items: center;
-      gap: 4px;
-      height: 36px;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
-    .bar {
-      width: 4px;
-      background: linear-gradient(180deg, var(--cyan), var(--purple));
-      border-radius: 3px;
-      animation: soundWave 1.4s ease-in-out infinite alternate;
+    .stack-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-glass);
+      color: #e2e8f0;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 11px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      transition: all 0.15s;
     }
 
-    @keyframes soundWave {
-      0% { height: 6px; opacity: 0.4; }
-      100% { height: 34px; opacity: 1; }
+    .stack-pill:hover {
+      background: rgba(56, 189, 248, 0.1);
+      border-color: var(--cyan);
+      color: #fff;
+      transform: translateY(-1px);
     }
 
-    /* Interactive Quantum CLI Console */
-    .console-section {
-      margin-bottom: 96px;
-    }
-
-    .terminal-card {
-      background: #040810;
-      border: 1px solid var(--border-line);
-      border-radius: 20px;
+    /* Clean Glass Terminal */
+    .terminal-glass {
+      background: rgba(7, 10, 18, 0.85);
+      border: 1px solid var(--border-glass);
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.05);
+      margin-bottom: 72px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(24px);
     }
 
     .terminal-header {
-      background: #090f1e;
-      border-bottom: 1px solid var(--border-line);
-      padding: 16px 24px;
+      background: rgba(14, 20, 34, 0.8);
+      border-bottom: 1px solid var(--border-glass);
+      padding: 12px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -567,201 +560,95 @@
 
     .terminal-dots {
       display: flex;
-      gap: 8px;
+      gap: 6px;
     }
 
     .dot {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
     }
 
-    .terminal-title {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--text-dark);
-      font-weight: 600;
-    }
-
     .terminal-body {
-      padding: 32px;
+      padding: 24px;
       font-family: var(--font-mono);
-      font-size: 14px;
-      line-height: 1.8;
-      min-height: 300px;
+      font-size: 13.5px;
+      line-height: 1.7;
       color: #94a3b8;
     }
 
-    .terminal-input-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 0 32px 28px;
-    }
-
-    .t-prompt {
-      color: var(--cyan);
-      font-weight: 700;
-    }
-
-    .t-input {
-      background: transparent;
-      border: none;
-      outline: none;
-      color: #fff;
-      font-family: var(--font-mono);
-      font-size: 14px;
-      flex: 1;
-    }
-
-    /* Complete Tech Stack Matrix */
-    .stack-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-bottom: 96px;
-    }
-
-    .stack-card {
-      background: var(--card-glass);
-      border: 1px solid var(--border-line);
-      border-radius: 18px;
-      padding: 30px;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      transition: all 0.3s;
-    }
-
-    .stack-card:hover {
-      border-color: var(--border-highlight);
-      transform: translateY(-3px);
-    }
-
-    .stack-card h4 {
-      font-family: var(--font-display);
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: #fff;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .stack-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag-item {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #e2e8f0;
-      font-size: 12px;
-      font-weight: 500;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-family: var(--font-mono);
-      transition: all 0.15s;
-    }
-
-    .tag-item:hover {
-      background: rgba(56, 189, 248, 0.15);
-      border-color: var(--cyan);
-      color: #fff;
-      transform: translateY(-1px);
-    }
+    .t-key { color: var(--cyan); }
+    .t-str { color: #a5d6ff; }
+    .t-str-alt { color: var(--purple); }
+    .t-num { color: var(--amber); }
 
     /* Footer */
     footer {
-      border-top: 1px solid var(--border-line);
-      padding: 64px 0 80px;
+      border-top: 1px solid var(--border-glass);
+      padding: 48px 0;
       text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
     }
 
     .footer-quote {
-      font-family: var(--font-display);
-      font-size: 18px;
-      color: var(--text-gray);
+      font-size: 15px;
+      color: var(--text-secondary);
+      font-style: italic;
       margin-bottom: 16px;
     }
 
-    .footer-sub {
-      font-size: 13px;
-      color: var(--text-dark);
-      font-family: var(--font-mono);
-    }
-
-    /* Responsive */
-    @media (max-width: 960px) {
+    @media (max-width: 900px) {
       .col-8, .col-4, .col-6 { grid-column: span 12; }
       .kpi-strip { grid-template-columns: repeat(2, 1fr); }
-      .nav-center { display: none; }
     }
 
     @media (max-width: 600px) {
       .kpi-strip { grid-template-columns: 1fr; }
-      .hero-h1 { font-size: 40px; }
+      .nav-links { display: none; }
+      .hero { padding: 16px 0 40px; }
       .bento-card { padding: 24px; }
     }
   </style>
 </head>
 <body>
-  <!-- Grain & Spotlight -->
-  <div class="film-grain"></div>
-  <div id="cursor-light"></div>
+  <div class="bg-grid"></div>
+  <div class="ambient-sphere sphere-1"></div>
+  <div class="ambient-sphere sphere-2"></div>
+  <canvas id="particle-canvas"></canvas>
 
-  <!-- 3D Three.js WebGL Universe Canvas -->
-  <canvas id="webgl-universe"></canvas>
-
-  <div class="wrapper">
-    <!-- Top HUD Navigation -->
-    <header>
-      <div class="nav-hud">
-        <a href="#" class="nav-logo">
-          <div class="logo-badge">Z</div>
-          <span class="logo-title">OLEG SEMENOV</span>
+  <div class="container">
+    <!-- Floating Frosted Glass Navigation -->
+    <nav>
+      <div class="nav-glass">
+        <a href="#" class="brand">
+          <img src="assets/logo-icon.svg" alt="Zyr3x Logo" class="brand-logo-img">
+          <span class="brand-name">zyr3x<span style="color: var(--cyan);">.</span> <span style="color: var(--text-muted); font-weight: 400; font-size: 13px;">| Oleg Semenov</span></span>
         </a>
-        <div class="nav-center">
-          <a href="#platforms" class="nav-link">PLATFORMS</a>
-          <a href="#belvg" class="nav-link">BELVG CORE</a>
-          <a href="#tooling" class="nav-link">AI SWARMS</a>
-          <a href="#matrix" class="nav-link">STACK MATRIX</a>
-          <a href="#terminal" class="nav-link">CONSOLE</a>
+        <div class="nav-links">
+          <a href="#platforms" class="nav-item">Platforms</a>
+          <a href="#belvg" class="nav-item">BelVG</a>
+          <a href="#tooling" class="nav-item">AI Tooling</a>
+          <a href="#stack" class="nav-item">Tech Matrix</a>
         </div>
-        <div class="nav-right">
-          <div class="live-status">
-            <span class="live-dot"></span>
-            SYSTEM : ONLINE
-          </div>
-          <button class="sound-btn" id="audioToggle" title="Toggle Futuristic Audio Cues">
-            <svg id="soundIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-            </svg>
-          </button>
+        <div class="status-pill">
+          <span class="status-beacon"></span>
+          PRODUCTION ACTIVE
         </div>
       </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-      <div class="hero-hud-tag">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--cyan);"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-        <span>Executive AI Engineering &amp; High-Load Systems</span>
+      <div class="hero-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        <span>Executive Architecture &amp; AI Engineering</span>
       </div>
-      <h1 class="hero-h1">
-        ENGINEERING <br>
-        <span class="hero-gradient-clip">AUTONOMOUS INTELLIGENCE</span> <br>
-        &amp; ENTERPRISE SYSTEMS.
-      </h1>
-      <p class="hero-subtitle">
-        <strong>Chief Technology Officer (CTO) @ <a href="https://belvg.com" target="_blank" style="color: var(--belvg-orange); text-decoration: none;">BelVG</a></strong> and Head of AI Software Engineering based in Riga, Latvia. Over 15 years architecting enterprise eCommerce ecosystems, Model Context Protocol (MCP) toolchains, and multi-agent AI networks.
+      <h1>Oleg Semenov</h1>
+      <p class="hero-lead">
+        <strong>Chief Technology Officer (CTO) @ <a href="https://belvg.com" target="_blank" style="color: var(--orange); text-decoration: none;">BelVG</a></strong> and Head of AI Software Engineering based in Riga, Latvia. Over 15 years architecting enterprise eCommerce ecosystems, high-throughput cloud backends, and autonomous multi-agent systems.
       </p>
-      <div class="hero-btns">
+      <div class="hero-actions">
         <a href="https://belvg.com" target="_blank" class="btn btn-belvg">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
           BelVG Enterprise Core
@@ -774,555 +661,362 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
           LinkedIn
         </a>
-        <a href="#terminal" class="btn btn-glass" style="font-family: var(--font-mono);">
-          &gt; Open Console
-        </a>
       </div>
     </section>
 
-    <!-- Key Live Telemetry KPIs -->
+    <!-- Key Telemetry KPIs -->
     <section class="kpi-strip">
-      <div class="kpi-box">
-        <div class="kpi-num" style="color: var(--cyan);">3,200+</div>
-        <div class="kpi-title">Annual Contributions</div>
-        <div class="kpi-sub">High-velocity engineering commits across production repos, enterprise orgs, and OSS.</div>
+      <div class="kpi-card">
+        <div class="kpi-val" style="color: var(--cyan);">3,200+</div>
+        <div class="kpi-label">Annual Contributions</div>
+        <div class="kpi-sub">High-velocity engineering commits across enterprise repositories and OSS.</div>
       </div>
-      <div class="kpi-box">
-        <div class="kpi-num" style="color: var(--emerald);">15+ Yrs</div>
-        <div class="kpi-title">Enterprise Architecture</div>
-        <div class="kpi-sub">High-load eCommerce ecosystems, ERP/CRM middleware, and distributed cloud backends.</div>
+      <div class="kpi-card">
+        <div class="kpi-val" style="color: var(--emerald);">15+ Yrs</div>
+        <div class="kpi-label">Enterprise Architecture</div>
+        <div class="kpi-sub">Scalable eCommerce backends, ERP/CRM bridges, and cloud optimization.</div>
       </div>
-      <div class="kpi-box">
-        <div class="kpi-num" style="color: var(--amber);">75+</div>
-        <div class="kpi-title">Repositories Built</div>
-        <div class="kpi-sub">AI agent bridges, proxies, specialized SDKs, and enterprise modules.</div>
+      <div class="kpi-card">
+        <div class="kpi-val" style="color: var(--amber);">75+</div>
+        <div class="kpi-label">Repositories Built</div>
+        <div class="kpi-sub">Autonomous AI tools, proxies, SDK integrations, and open-source packages.</div>
       </div>
-      <div class="kpi-box">
-        <div class="kpi-num" style="color: var(--purple);">AI Swarms</div>
-        <div class="kpi-title">Multi-Agent &amp; MCP</div>
-        <div class="kpi-sub">Model Context Protocol toolchains, autonomous LLM swarms, and self-healing systems.</div>
+      <div class="kpi-card">
+        <div class="kpi-val" style="color: var(--purple);">AI Agents</div>
+        <div class="kpi-label">Multi-Agent Swarms</div>
+        <div class="kpi-sub">MCP toolchains, LLM orchestration, and proactive autonomous workflows.</div>
       </div>
     </section>
 
     <!-- Flagship Bento Showcase -->
-    <div class="section-head" id="platforms">
-      <div class="section-num">// 01. Flagship Digital Ecosystem</div>
-      <h2 class="section-title">Production Platforms &amp; Products</h2>
+    <div class="section-wrap" id="platforms">
+      <div class="section-tag">// Digital Ecosystem &amp; Platforms</div>
+      <h2 class="section-title">Flagship Platforms &amp; Products</h2>
     </div>
 
     <section class="bento-grid">
       <!-- BelVG Enterprise Core (Col 8) -->
       <div class="bento-card col-8" id="belvg">
         <div>
-          <div class="card-badge badge-orange">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="9" y1="6" x2="9.01" y2="6"></line><line x1="15" y1="6" x2="15.01" y2="6"></line><line x1="9" y1="10" x2="9.01" y2="10"></line><line x1="15" y1="10" x2="15.01" y2="10"></line><line x1="9" y1="14" x2="9.01" y2="14"></line><line x1="15" y1="14" x2="15.01" y2="14"></line><line x1="9" y1="18" x2="15" y2="18"></line></svg>
-            Enterprise Flagship • CTO
+          <div class="badge-pill badge-orange">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="9" y1="6" x2="9.01" y2="6"></line><line x1="15" y1="6" x2="15.01" y2="6"></line><line x1="9" y1="10" x2="9.01" y2="10"></line><line x1="15" y1="10" x2="15.01" y2="10"></line><line x1="9" y1="14" x2="9.01" y2="14"></line><line x1="15" y1="14" x2="15.01" y2="14"></line><line x1="9" y1="18" x2="15" y2="18"></line></svg>
+            Enterprise Core • CTO
           </div>
           <h3><a href="https://belvg.com" target="_blank">BelVG Enterprise eCommerce Ecosystems ↗</a></h3>
-          <p>
-            15+ years directing enterprise technology strategy and engineering leadership across high-load global commerce. Architecting multi-million dollar catalog indexing engines, microservice orchestrations, resilient payment/order pipelines, and custom extensions on Magento 2, Sylius, and Prestashop.
+          <p class="bento-desc">
+            Directing technology strategy and engineering leadership across high-load eCommerce platforms, custom extension architectures, high-speed catalog indexing pipelines, and mission-critical payment/order gateways for global merchants.
           </p>
         </div>
-        <div class="pill-list">
-          <span class="pill">Magento 2 Enterprise</span>
-          <span class="pill">Sylius</span>
-          <span class="pill">Prestashop</span>
-          <span class="pill">High-Load Microservices</span>
-          <span class="pill">Elasticsearch / OpenSearch</span>
-          <span class="pill">Redis Cluster</span>
-          <span class="pill">Varnish Cache</span>
+        <div class="tag-row">
+          <span class="glass-tag">Magento 2 Enterprise</span>
+          <span class="glass-tag">Sylius</span>
+          <span class="glass-tag">Prestashop</span>
+          <span class="glass-tag">High-Load Microservices</span>
+          <span class="glass-tag">Elasticsearch</span>
+          <span class="glass-tag">Redis Cluster</span>
         </div>
       </div>
 
       <!-- fnxt.app (Col 4) -->
       <div class="bento-card col-4">
         <div>
-          <div class="card-badge badge-cyan">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          <div class="badge-pill badge-cyan">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
             Autonomous AI
           </div>
           <h3><a href="https://fnxt.app" target="_blank">fnxt.app ↗</a></h3>
-          <p>
-            Next-generation AI automation platform built for high-throughput autonomous workflow execution, intelligent data enrichment, and reactive cloud integrations.
+          <p class="bento-desc">
+            Next-generation AI automation platform engineered for high-efficiency autonomous execution, data enrichment, and intelligent process workflows.
           </p>
         </div>
-        <div class="pill-list">
-          <span class="pill">FastAPI</span>
-          <span class="pill">Cloudflare</span>
-          <span class="pill">LLM Toolchains</span>
+        <div class="tag-row">
+          <span class="glass-tag">FastAPI</span>
+          <span class="glass-tag">Cloudflare</span>
+          <span class="glass-tag">LLM Tooling</span>
         </div>
       </div>
 
       <!-- deepmine.by (Col 6) -->
       <div class="bento-card col-6">
         <div>
-          <div class="card-badge badge-purple">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+          <div class="badge-pill badge-purple">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
             Media &amp; Audio AI
           </div>
           <h3><a href="https://deepmine.by" target="_blank">deepmine.by ↗</a></h3>
-          <div class="audio-canvas-box">
-            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--cyan);">ACOUSTIC TELEMETRY</div>
-            <div class="audio-bars">
-              <div class="bar" style="animation-delay: 0.1s;"></div>
-              <div class="bar" style="animation-delay: 0.4s;"></div>
-              <div class="bar" style="animation-delay: 0.2s;"></div>
-              <div class="bar" style="animation-delay: 0.7s;"></div>
-              <div class="bar" style="animation-delay: 0.3s;"></div>
-              <div class="bar" style="animation-delay: 0.5s;"></div>
-              <div class="bar" style="animation-delay: 0.2s;"></div>
-              <div class="bar" style="animation-delay: 0.6s;"></div>
-            </div>
-          </div>
-          <p>
-            Advanced media intelligence, speech processing, and audio synthesis pipelines for automated content transcription, voice generation, and acoustic telemetry.
+          <p class="bento-desc">
+            Advanced media intelligence, speech processing, and audio synthesis pipelines designed for high-scale automated content workflows and acoustic analysis.
           </p>
         </div>
-        <div class="pill-list">
-          <span class="pill">PyTorch</span>
-          <span class="pill">Whisper</span>
-          <span class="pill">Audio Processing</span>
-          <span class="pill">CUDA</span>
+        <div class="tag-row">
+          <span class="glass-tag">PyTorch</span>
+          <span class="glass-tag">Whisper</span>
+          <span class="glass-tag">Audio Processing</span>
+          <span class="glass-tag">CUDA</span>
         </div>
       </div>
 
       <!-- doka2.com (Col 6) -->
       <div class="bento-card col-6">
         <div>
-          <div class="card-badge badge-amber">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"></rect><line x1="6" y1="12" x2="10" y2="12"></line><line x1="8" y1="10" x2="8" y2="14"></line><line x1="15" y1="13" x2="15.01" y2="13"></line><line x1="18" y1="11" x2="18.01" y2="11"></line></svg>
-            Interactive Gaming
+          <div class="badge-pill badge-amber">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"></rect><line x1="6" y1="12" x2="10" y2="12"></line><line x1="8" y1="10" x2="8" y2="14"></line><line x1="15" y1="13" x2="15.01" y2="13"></line><line x1="18" y1="11" x2="18.01" y2="11"></line></svg>
+            Interactive Web
           </div>
           <h3><a href="https://doka2.com" target="_blank">doka2.com ↗</a></h3>
-          <p>
-            Real-time web gaming ecosystem and interactive community network engineered for high-concurrency engagement and sub-millisecond client-server state replication.
+          <p class="bento-desc">
+            Interactive web gaming and dynamic community platform built for high-traffic real-time engagement and low-latency client-server state synchronization.
           </p>
         </div>
-        <div class="pill-list">
-          <span class="pill">WebSockets</span>
-          <span class="pill">Node.js</span>
-          <span class="pill">Real-Time Sync</span>
-          <span class="pill">Canvas / WebGL</span>
+        <div class="tag-row">
+          <span class="glass-tag">WebSockets</span>
+          <span class="glass-tag">Node.js</span>
+          <span class="glass-tag">Real-Time Sync</span>
+          <span class="glass-tag">Canvas</span>
         </div>
       </div>
     </section>
 
-    <!-- Open Source & AI Middleware -->
-    <div class="section-head" id="tooling">
-      <div class="section-num">// 02. AI Middleware &amp; Agent Bridges</div>
-      <h2 class="section-title">Open Source Tooling &amp; Swarms</h2>
+    <!-- Open Source & AI Tooling -->
+    <div class="section-wrap" id="tooling">
+      <div class="section-tag">// Open Source &amp; Autonomous Agents</div>
+      <h2 class="section-title">AI Tooling &amp; Agent Bridges</h2>
     </div>
 
     <section class="bento-grid">
       <!-- opengeminiai-studio -->
       <div class="bento-card col-6">
         <div>
-          <div class="card-badge badge-emerald">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <div class="badge-pill badge-emerald">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
             OpenAI ↔ Gemini Bridge
           </div>
           <h3><a href="https://github.com/zyr3x/opengeminiai-studio" target="_blank">opengeminiai-studio ↗</a></h3>
-          <p>
-            High-performance, ultra-lightweight proxy bridging Google Gemini API with any OpenAI API-compatible client or developer tool, enabling seamless model interchangeability with zero refactoring.
+          <p class="bento-desc">
+            An advanced, ultra-lightweight proxy that seamlessly bridges Google Gemini API with any OpenAI API-compatible client or developer tool, enabling frontier model integration with zero code refactoring.
           </p>
         </div>
-        <div class="pill-list">
-          <span class="pill">Python</span>
-          <span class="pill">FastAPI</span>
-          <span class="pill">Google Gemini SDK</span>
-          <span class="pill">OpenAI Compatibility</span>
+        <div class="tag-row">
+          <span class="glass-tag">Python</span>
+          <span class="glass-tag">FastAPI</span>
+          <span class="glass-tag">Google Gemini SDK</span>
+          <span class="glass-tag">OpenAI Spec</span>
         </div>
       </div>
 
       <!-- antigravity-telegram-bridge -->
       <div class="bento-card col-6">
         <div>
-          <div class="card-badge badge-cyan">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" y1="16" x2="8.01" y2="16"></line><line x1="16" y1="16" x2="16.01" y2="16"></line></svg>
-            Autonomous Agent Interface
+          <div class="badge-pill badge-cyan">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" y1="16" x2="8.01" y2="16"></line><line x1="16" y1="16" x2="16.01" y2="16"></line></svg>
+            Autonomous Interface
           </div>
           <h3><a href="https://github.com/zyr3x/antigravity-telegram-bridge" target="_blank">antigravity-telegram-bridge ↗</a></h3>
-          <p>
-            Universal Telegram orchestration interface for Google Antigravity autonomous AI agents, featuring bidirectional tool execution, agent telemetry, and reactive async event alerts.
+          <p class="bento-desc">
+            Universal Telegram chat and control interface for Google Antigravity autonomous AI agents, enabling real-time status telemetry, task dispatching, and asynchronous agent notifications.
           </p>
         </div>
-        <div class="pill-list">
-          <span class="pill">Antigravity SDK</span>
-          <span class="pill">Telegram Bot API</span>
-          <span class="pill">Asyncio</span>
-          <span class="pill">Tool Calling</span>
+        <div class="tag-row">
+          <span class="glass-tag">Antigravity SDK</span>
+          <span class="glass-tag">Telegram Bot API</span>
+          <span class="glass-tag">Asyncio</span>
+          <span class="glass-tag">Tool Calling</span>
         </div>
       </div>
     </section>
 
-    <!-- Complete Tech Matrix -->
-    <div class="section-head" id="matrix">
-      <div class="section-num">// 03. Technical Capabilities</div>
-      <h2 class="section-title">Comprehensive Architecture Matrix</h2>
+    <!-- Comprehensive Stack Matrix -->
+    <div class="section-wrap" id="stack">
+      <div class="section-tag">// Architecture &amp; Technology Matrix</div>
+      <h2 class="section-title">Core Competencies &amp; Toolbelt</h2>
     </div>
 
     <section class="stack-grid">
-      <div class="stack-card">
+      <div class="stack-glass">
         <h4>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--cyan);"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3m0 14v3M2 12h3m14 0h3"></path></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--cyan);"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3m0 14v3M2 12h3m14 0h3"></path></svg>
           AI, LLMs &amp; Agents
         </h4>
-        <div class="stack-tags">
-          <span class="tag-item">Google Gemini</span>
-          <span class="tag-item">Google Vertex AI</span>
-          <span class="tag-item">Anthropic Claude</span>
-          <span class="tag-item">OpenAI GPT-4o</span>
-          <span class="tag-item">MCP Protocol</span>
-          <span class="tag-item">FastMCP</span>
-          <span class="tag-item">Antigravity SDK</span>
-          <span class="tag-item">Ollama</span>
-          <span class="tag-item">LangChain</span>
-          <span class="tag-item">PyTorch</span>
+        <div class="stack-items">
+          <span class="stack-pill">Google Gemini</span>
+          <span class="stack-pill">Google Vertex AI</span>
+          <span class="stack-pill">Anthropic Claude</span>
+          <span class="stack-pill">OpenAI GPT-4o</span>
+          <span class="stack-pill">MCP Protocol</span>
+          <span class="stack-pill">FastMCP</span>
+          <span class="stack-pill">Antigravity SDK</span>
+          <span class="stack-pill">Ollama</span>
+          <span class="stack-pill">LangChain</span>
+          <span class="stack-pill">PyTorch</span>
         </div>
       </div>
 
-      <div class="stack-card">
+      <div class="stack-glass">
         <h4>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--purple);"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--purple);"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
           Vector DB &amp; Data
         </h4>
-        <div class="stack-tags">
-          <span class="tag-item">ChromaDB</span>
-          <span class="tag-item">Qdrant</span>
-          <span class="tag-item">Elasticsearch</span>
-          <span class="tag-item">OpenSearch</span>
-          <span class="tag-item">PostgreSQL / pgvector</span>
-          <span class="tag-item">Redis / KeyDB</span>
-          <span class="tag-item">MySQL / MariaDB</span>
-          <span class="tag-item">SQLite / aiosqlite</span>
+        <div class="stack-items">
+          <span class="stack-pill">ChromaDB</span>
+          <span class="stack-pill">Qdrant</span>
+          <span class="stack-pill">Elasticsearch</span>
+          <span class="stack-pill">OpenSearch</span>
+          <span class="stack-pill">PostgreSQL / pgvector</span>
+          <span class="stack-pill">Redis / KeyDB</span>
+          <span class="stack-pill">MySQL / MariaDB</span>
+          <span class="stack-pill">SQLite / aiosqlite</span>
         </div>
       </div>
 
-      <div class="stack-card">
+      <div class="stack-glass">
         <h4>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--cyan);"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
-          Cloud &amp; Infra
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--cyan);"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+          Cloud &amp; Infrastructure
         </h4>
-        <div class="stack-tags">
-          <span class="tag-item">Google Cloud Platform</span>
-          <span class="tag-item">AWS</span>
-          <span class="tag-item">Cloudflare &amp; Workers</span>
-          <span class="tag-item">Docker &amp; Compose</span>
-          <span class="tag-item">Kubernetes</span>
-          <span class="tag-item">LXD / Linux Containers</span>
-          <span class="tag-item">Nginx Reverse Proxy</span>
-          <span class="tag-item">RabbitMQ &amp; Celery</span>
-          <span class="tag-item">Varnish Cache</span>
-          <span class="tag-item">Linux Kernel / POSIX</span>
+        <div class="stack-items">
+          <span class="stack-pill">Google Cloud Platform</span>
+          <span class="stack-pill">AWS</span>
+          <span class="stack-pill">Cloudflare &amp; Workers</span>
+          <span class="stack-pill">Docker &amp; Compose</span>
+          <span class="stack-pill">Kubernetes</span>
+          <span class="stack-pill">LXD / Containers</span>
+          <span class="stack-pill">Nginx Reverse Proxy</span>
+          <span class="stack-pill">RabbitMQ &amp; Celery</span>
+          <span class="stack-pill">Varnish Cache</span>
+          <span class="stack-pill">Linux Kernel / POSIX</span>
         </div>
       </div>
 
-      <div class="stack-card">
+      <div class="stack-glass">
         <h4>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--emerald);"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--emerald);"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
           Languages &amp; Core
         </h4>
-        <div class="stack-tags">
-          <span class="tag-item">Python</span>
-          <span class="tag-item">TypeScript</span>
-          <span class="tag-item">JavaScript</span>
-          <span class="tag-item">PHP 8.x</span>
-          <span class="tag-item">Go</span>
-          <span class="tag-item">Bash / Shell</span>
-          <span class="tag-item">C / C++</span>
-          <span class="tag-item">SQL</span>
+        <div class="stack-items">
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">TypeScript</span>
+          <span class="stack-pill">JavaScript</span>
+          <span class="stack-pill">PHP 8.x</span>
+          <span class="stack-pill">Go</span>
+          <span class="stack-pill">Bash / Shell</span>
+          <span class="stack-pill">C / C++</span>
+          <span class="stack-pill">SQL</span>
         </div>
       </div>
 
-      <div class="stack-card">
+      <div class="stack-glass">
         <h4>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--belvg-orange);"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-          Core &amp; Commerce
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--orange);"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          Frameworks &amp; Commerce
         </h4>
-        <div class="stack-tags">
-          <span class="tag-item">FastAPI</span>
-          <span class="tag-item">Node.js</span>
-          <span class="tag-item">Flask</span>
-          <span class="tag-item">Symfony</span>
-          <span class="tag-item">Laravel</span>
-          <span class="tag-item">Magento 2 Enterprise</span>
-          <span class="tag-item">Sylius</span>
-          <span class="tag-item">Prestashop</span>
+        <div class="stack-items">
+          <span class="stack-pill">FastAPI</span>
+          <span class="stack-pill">Node.js</span>
+          <span class="stack-pill">Flask</span>
+          <span class="stack-pill">Symfony</span>
+          <span class="stack-pill">Laravel</span>
+          <span class="stack-pill">Magento 2 Enterprise</span>
+          <span class="stack-pill">Sylius</span>
+          <span class="stack-pill">Prestashop</span>
         </div>
       </div>
     </section>
 
-    <!-- Interactive Quantum CLI Console -->
-    <div class="section-head" id="terminal">
-      <div class="section-num">// 04. Interactive Agent Console</div>
-      <h2 class="section-title">Quantum Terminal Telemetry</h2>
+    <!-- Frosted Glass Telemetry Window -->
+    <div class="terminal-glass">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <div class="dot" style="background: #ff5f56;"></div>
+          <div class="dot" style="background: #ffbd2e;"></div>
+          <div class="dot" style="background: #27c93f;"></div>
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);">zyr3x@core:~ (production-manifest.json)</div>
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--emerald);">● LIVE TELEMETRY</div>
+      </div>
+      <div class="terminal-body">
+        <div><span style="color: var(--text-muted); font-style: italic;">// Executive System Profile &amp; Architecture Spec</span></div>
+        <div>{</div>
+        <div style="padding-left: 20px;"><span class="t-key">"identity"</span>: { <span class="t-key">"name"</span>: <span class="t-str">"Oleg Semenov"</span>, <span class="t-key">"handle"</span>: <span class="t-str">"@zyr3x"</span>, <span class="t-key">"location"</span>: <span class="t-str">"Riga, Latvia"</span> },</div>
+        <div style="padding-left: 20px;"><span class="t-key">"executive_roles"</span>: [</div>
+        <div style="padding-left: 40px;"><span class="t-str-alt">"Chief Technology Officer (CTO) @ BelVG"</span>,</div>
+        <div style="padding-left: 40px;"><span class="t-str">"Head of AI Software Engineering &amp; Autonomous Swarms"</span></div>
+        <div style="padding-left: 20px;">],</div>
+        <div style="padding-left: 20px;"><span class="t-key">"production_scale"</span>: {</div>
+        <div style="padding-left: 40px;"><span class="t-key">"experience_years"</span>: <span class="t-num">15</span>,</div>
+        <div style="padding-left: 40px;"><span class="t-key">"annual_contributions"</span>: <span class="t-num">3200</span>,</div>
+        <div style="padding-left: 40px;"><span class="t-key">"core_platforms"</span>: [<span class="t-str">"belvg.com"</span>, <span class="t-str">"fnxt.app"</span>, <span class="t-str">"deepmine.by"</span>, <span class="t-str">"doka2.com"</span>]</div>
+        <div style="padding-left: 20px;">},</div>
+        <div style="padding-left: 20px;"><span class="t-key">"mission"</span>: <span class="t-str">"Engineering autonomous intelligence and scalable architectures at the intersection of AI and commerce."</span></div>
+        <div>}</div>
+      </div>
     </div>
-
-    <section class="console-section">
-      <div class="terminal-card">
-        <div class="terminal-header">
-          <div class="terminal-dots">
-            <div class="dot" style="background: #ff5f56;"></div>
-            <div class="dot" style="background: #ffbd2e;"></div>
-            <div class="dot" style="background: #27c93f;"></div>
-          </div>
-          <div class="terminal-title">zyr3x@gemini-core:~$ (active-session: mcp-v3.2)</div>
-          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--emerald);">● SECURE CHANNEL</div>
-        </div>
-        <div class="terminal-body" id="tLog">
-          <div><span style="color: var(--cyan); font-weight: bold;">Zyr3x Quantum Telemetry CLI [Version 3.0.0-release]</span></div>
-          <div>Type <span style="color: var(--amber); font-weight: bold;">'help'</span> to see available commands or inspect systems.</div>
-          <br>
-          <div><span style="color: var(--purple);">[SYSTEM]</span> Identity: Oleg Semenov | CTO @ BelVG | Head of AI Software Engineering</div>
-          <div><span style="color: var(--emerald);">[STATUS]</span> All agent nodes, MCP toolchains, and enterprise architectures operating at nominal capacity.</div>
-        </div>
-        <div class="terminal-input-row">
-          <span class="t-prompt">zyr3x@core:~$</span>
-          <input type="text" class="t-input" id="tInput" placeholder="try 'projects', 'belvg', 'stack', 'contact' or 'clear'..." autofocus>
-        </div>
-      </div>
-    </section>
 
     <!-- Footer -->
     <footer>
       <p class="footer-quote">"Engineering autonomous intelligence and scalable architectures at the intersection of AI and commerce."</p>
-      <p class="footer-sub">&copy; 2026 Oleg Semenov (@zyr3x) • CTO @ BelVG • Riga, Latvia</p>
+      <p>&copy; 2026 Oleg Semenov (@zyr3x) • CTO @ BelVG • Riga, Latvia</p>
     </footer>
   </div>
 
-  <!-- 3D Three.js WebGL Engine & Interaction Scripts -->
   <script>
-    // 1. Mouse Spotlight Tracker
-    const cursorLight = document.getElementById('cursor-light');
-    window.addEventListener('mousemove', (e) => {
-      cursorLight.style.left = e.clientX + 'px';
-      cursorLight.style.top = e.clientY + 'px';
-    });
+    // Lightweight smooth constellation particles
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, particles = [];
 
-    // 2. Three.js 3D Interactive Cybernetic Singularity
-    let scene, camera, renderer, starGeometry, stars, torusKnot, ring;
-    const canvas3d = document.getElementById('webgl-universe');
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
 
-    function init3D() {
-      scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.z = 80;
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.35;
+        this.vy = (Math.random() - 0.5) * 0.35;
+        this.radius = Math.random() * 1.4 + 0.6;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.4)';
+        ctx.fill();
+      }
+    }
 
-      renderer = new THREE.WebGLRenderer({ canvas: canvas3d, alpha: true, antialias: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    for (let i = 0; i < 48; i++) particles.push(new Particle());
 
-      // Particle Field
-      const count = 1800;
-      const positions = new Float32Array(count * 3);
-      const colors = new Float32Array(count * 3);
-
-      for (let i = 0; i < count * 3; i += 3) {
-        positions[i] = (Math.random() - 0.5) * 200;
-        positions[i + 1] = (Math.random() - 0.5) * 200;
-        positions[i + 2] = (Math.random() - 0.5) * 200;
-
-        // Gradient Colors (Cyan to Violet to Gold)
-        const rand = Math.random();
-        if (rand > 0.6) {
-          colors[i] = 0.22; colors[i + 1] = 0.74; colors[i + 2] = 0.97; // Cyan
-        } else if (rand > 0.3) {
-          colors[i] = 0.66; colors[i + 1] = 0.33; colors[i + 2] = 0.97; // Purple
-        } else {
-          colors[i] = 1.0; colors[i + 1] = 0.42; colors[i + 2] = 0.0; // BelVG Orange
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 125) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(56, 189, 248, ${0.16 * (1 - dist / 125)})`;
+            ctx.lineWidth = 0.75;
+            ctx.stroke();
+          }
         }
       }
-
-      starGeometry = new THREE.BufferGeometry();
-      starGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      starGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-      const starMaterial = new THREE.PointsMaterial({
-        size: 1.2,
-        vertexColors: true,
-        transparent: true,
-        opacity: 0.75,
-        blending: THREE.AdditiveBlending
-      });
-
-      stars = new THREE.Points(starGeometry, starMaterial);
-      scene.add(stars);
-
-      // Rotating Wireframe Torus Ring
-      const torusGeo = new THREE.TorusGeometry(32, 1.2, 16, 100);
-      const torusMat = new THREE.MeshBasicMaterial({
-        color: 0x38bdf8,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.12
-      });
-      torusKnot = new THREE.Mesh(torusGeo, torusMat);
-      torusKnot.rotation.x = Math.PI / 3;
-      scene.add(torusKnot);
-
-      const ringGeo = new THREE.RingGeometry(40, 40.8, 64);
-      const ringMat = new THREE.MeshBasicMaterial({
-        color: 0xff6b00,
-        side: THREE.DoubleSide,
-        transparent: true,
-        opacity: 0.15
-      });
-      ring = new THREE.Mesh(ringGeo, ringMat);
-      ring.rotation.x = Math.PI / 2.5;
-      scene.add(ring);
+      requestAnimationFrame(animate);
     }
-
-    let mouseX = 0, mouseY = 0;
-    window.addEventListener('mousemove', (e) => {
-      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-    });
-
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-
-    function animate3D() {
-      requestAnimationFrame(animate3D);
-
-      stars.rotation.y += 0.0008;
-      stars.rotation.x += 0.0004;
-
-      torusKnot.rotation.z += 0.002;
-      torusKnot.rotation.y += 0.001;
-
-      ring.rotation.z -= 0.0015;
-
-      // Smooth mouse parallax
-      camera.position.x += (mouseX * 12 - camera.position.x) * 0.03;
-      camera.position.y += (-mouseY * 12 - camera.position.y) * 0.03;
-      camera.lookAt(scene.position);
-
-      renderer.render(scene, camera);
-    }
-
-    init3D();
-    animate3D();
-
-    // 3. Web Audio Synthesizer Engine (Sci-Fi Audio Cues)
-    let audioCtx = null;
-    let soundEnabled = true;
-
-    function playTechChirp(freq = 600, type = 'sine', duration = 0.08) {
-      if (!soundEnabled) return;
-      try {
-        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = type;
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(freq * 1.5, audioCtx.currentTime + duration);
-
-        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-
-        osc.start();
-        osc.stop(audioCtx.currentTime + duration);
-      } catch(e) {}
-    }
-
-    const soundIcon = document.getElementById('soundIcon');
-    document.getElementById('audioToggle').addEventListener('click', () => {
-      soundEnabled = !soundEnabled;
-      if (soundEnabled) {
-        soundIcon.innerHTML = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>`;
-        playTechChirp(800, 'triangle', 0.12);
-      } else {
-        soundIcon.innerHTML = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line>`;
-      }
-    });
-
-    document.querySelectorAll('.btn, .pill, .tag-item, .nav-link').forEach(el => {
-      el.addEventListener('mouseenter', () => playTechChirp(750, 'sine', 0.04));
-    });
-
-    // 4. Interactive Quantum CLI Console
-    const tLog = document.getElementById('tLog');
-    const tInput = document.getElementById('tInput');
-
-    const CLI_COMMANDS = {
-      help: () => `
-Available Commands:
-  • <span style="color: var(--cyan);">projects</span>   - List flagship production platforms (fnxt.app, deepmine.by, doka2.com)
-  • <span style="color: var(--belvg-orange);">belvg</span>      - View BelVG enterprise eCommerce & architecture scope
-  • <span style="color: var(--purple);">tooling</span>    - Inspect open-source AI proxies and Antigravity bridges
-  • <span style="color: var(--emerald);">stack</span>      - Display complete architecture & technical matrix
-  • <span style="color: var(--amber);">contact</span>    - View verified LinkedIn, GitHub & business channels
-  • <span style="color: var(--cyan);">clear</span>      - Clear terminal screen`,
-
-      projects: () => `
-<span style="color: var(--cyan); font-weight: bold;">[FLAGSHIP PLATFORMS]</span>
-  • <a href="https://fnxt.app" target="_blank" style="color: var(--cyan);">fnxt.app</a>       - Next-Gen Autonomous AI Automation & Workflow Execution Platform
-  • <a href="https://deepmine.by" target="_blank" style="color: var(--purple);">deepmine.by</a>   - Media Intelligence, PyTorch & Whisper Speech Synthesis
-  • <a href="https://doka2.com" target="_blank" style="color: var(--amber);">doka2.com</a>      - Interactive Gaming & Real-Time WebSocket Network
-  • <a href="https://belvg.com" target="_blank" style="color: var(--belvg-orange);">belvg.com</a>      - High-Load Enterprise eCommerce Architecture & Microservices`,
-
-      belvg: () => `
-<span style="color: var(--belvg-orange); font-weight: bold;">[BELVG ENTERPRISE CORE]</span>
-  Role: Chief Technology Officer (CTO)
-  Domain: Enterprise eCommerce (Magento 2, Sylius, Prestashop, Custom Microservices)
-  Scale: 15+ years delivering high-throughput retail platforms and ERP/CRM integrations
-  URL: <a href="https://belvg.com" target="_blank" style="color: var(--belvg-orange);">https://belvg.com</a>`,
-
-      tooling: () => `
-<span style="color: var(--emerald); font-weight: bold;">[OPEN SOURCE & AI BRIDGES]</span>
-  • <a href="https://github.com/zyr3x/opengeminiai-studio" target="_blank" style="color: var(--emerald);">opengeminiai-studio</a>       - Seamless Gemini API proxy for OpenAI clients
-  • <a href="https://github.com/zyr3x/antigravity-telegram-bridge" target="_blank" style="color: var(--cyan);">antigravity-telegram-bridge</a> - Bidirectional Telegram interface for Antigravity AI agents`,
-
-      stack: () => `
-<span style="color: var(--cyan); font-weight: bold;">[ARCHITECTURE TOOLBELT]</span>
-  • AI & Agents: Google Gemini, Vertex AI, Claude, OpenAI, FastMCP, Antigravity, PyTorch, LangChain
-  • Vector & Data: ChromaDB, Qdrant, Elasticsearch, OpenSearch, PostgreSQL (pgvector), Redis, MySQL
-  • Cloud & Infra: GCP, AWS, Cloudflare, Docker, Kubernetes, LXD/LXC, Nginx, RabbitMQ, Linux
-  • Languages: Python, TypeScript, JavaScript, PHP, Go, Bash, C/C++, SQL`,
-
-      contact: () => `
-<span style="color: var(--amber); font-weight: bold;">[CHANNELS]</span>
-  • LinkedIn: <a href="https://www.linkedin.com/in/oleg-semenov-belvg/" target="_blank" style="color: var(--cyan);">https://www.linkedin.com/in/oleg-semenov-belvg/</a>
-  • GitHub:   <a href="https://github.com/zyr3x" target="_blank" style="color: var(--cyan);">https://github.com/zyr3x</a>
-  • Company:  <a href="https://belvg.com" target="_blank" style="color: var(--belvg-orange);">https://belvg.com</a>
-  • Location: Riga, Latvia 🇱🇻`
-    };
-
-    tInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        const cmd = tInput.value.trim().toLowerCase();
-        tInput.value = '';
-
-        playTechChirp(900, 'sine', 0.06);
-
-        const line = document.createElement('div');
-        line.innerHTML = `<span class="t-prompt">zyr3x@core:~$</span> <span style="color:#fff;">${cmd}</span>`;
-        tLog.appendChild(line);
-
-        if (cmd === 'clear') {
-          tLog.innerHTML = '';
-        } else if (CLI_COMMANDS[cmd]) {
-          const res = document.createElement('div');
-          res.style.margin = "8px 0 16px";
-          res.innerHTML = CLI_COMMANDS[cmd]();
-          tLog.appendChild(res);
-        } else if (cmd !== '') {
-          const err = document.createElement('div');
-          err.style.margin = "8px 0 16px";
-          err.innerHTML = `<span style="color: #f43f5e;">Command not recognized: '${cmd}'. Type 'help' for available commands.</span>`;
-          tLog.appendChild(err);
-        }
-        tLog.scrollTop = tLog.scrollHeight;
-      }
-    });
+    animate();
   </script>
 </body>
 </html>
