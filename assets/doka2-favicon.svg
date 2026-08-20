@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" shape-rendering="crispEdges">
+  <!-- Rounded Dark Tab Tile Background -->
+  <rect width="32" height="32" fill="#090d13" rx="4"/>
+  
+  <!-- 3D Extruded Drop Shadow & Depth -->
+  <rect x="8" y="5" width="19" height="23" fill="#020403" opacity="0.8"/>
+  <rect x="9" y="27" width="15" height="3" fill="#020403" opacity="0.65"/>
+  <rect x="13" y="29" width="7" height="2" fill="#020403" opacity="0.5"/>
+  <rect x="2" y="26" width="28" height="4" fill="#020403" opacity="0.75"/>
+
+  <!-- Outer Dark Crest Silhouette Outline -->
+  <rect x="6" y="1" width="20" height="1" fill="#140d04"/>
+  <rect x="5" y="2" width="22" height="1" fill="#140d04"/>
+  <rect x="4" y="3" width="24" height="14" fill="#140d04"/>
+  <rect x="5" y="17" width="22" height="1" fill="#140d04"/>
+  <rect x="6" y="18" width="20" height="1" fill="#140d04"/>
+  <rect x="7" y="19" width="18" height="1" fill="#140d04"/>
+  <rect x="8" y="20" width="16" height="1" fill="#140d04"/>
+  <rect x="9" y="21" width="14" height="1" fill="#140d04"/>
+  <rect x="10" y="22" width="12" height="1" fill="#140d04"/>
+  <rect x="11" y="23" width="10" height="1" fill="#140d04"/>
+  <rect x="12" y="24" width="8" height="1" fill="#140d04"/>
+  <rect x="13" y="25" width="6" height="1" fill="#140d04"/>
+  <rect x="14" y="26" width="4" height="1" fill="#140d04"/>
+  <rect x="15" y="27" width="2" height="1" fill="#140d04"/>
+
+  <!-- 3D Shadow Extrusion Facets (Right & Bottom-Right Bevel) -->
+  <rect x="25" y="3" width="2" height="14" fill="#5c2606"/>
+  <rect x="26" y="4" width="1" height="12" fill="#381502"/>
+  <rect x="22" y="17" width="4" height="1" fill="#5c2606"/>
+  <rect x="20" y="18" width="5" height="1" fill="#5c2606"/>
+  <rect x="18" y="19" width="5" height="1" fill="#5c2606"/>
+  <rect x="17" y="20" width="5" height="1" fill="#5c2606"/>
+  <rect x="16" y="21" width="4" height="1" fill="#5c2606"/>
+  <rect x="15" y="22" width="4" height="1" fill="#5c2606"/>
+  <rect x="14" y="23" width="4" height="1" fill="#5c2606"/>
+  <rect x="14" y="24" width="3" height="1" fill="#381502"/>
+  <rect x="14" y="25" width="2" height="1" fill="#381502"/>
+
+  <!-- 3D Gold Shield Frame -->
+  <!-- Top Gold Rim & Specular Highlights -->
+  <rect x="7" y="2" width="18" height="1" fill="#facc15"/>
+  <rect x="8" y="2" width="10" height="1" fill="#fef08a"/>
+  <rect x="6" y="3" width="2" height="1" fill="#fef08a"/>
+  <rect x="24" y="3" width="2" height="1" fill="#ca8a04"/>
+
+  <!-- Left Gold Rim (Specular Light Side) -->
+  <rect x="5" y="3" width="2" height="14" fill="#facc15"/>
+  <rect x="5" y="4" width="1" height="12" fill="#fef9c3"/>
+  <rect x="6" y="4" width="1" height="12" fill="#eab308"/>
+  <rect x="6" y="17" width="3" height="1" fill="#facc15"/>
+  <rect x="7" y="18" width="3" height="1" fill="#facc15"/>
+  <rect x="8" y="19" width="3" height="1" fill="#eab308"/>
+  <rect x="9" y="20" width="3" height="1" fill="#ca8a04"/>
+  <rect x="10" y="21" width="3" height="1" fill="#a16207"/>
+  <rect x="11" y="22" width="3" height="1" fill="#a16207"/>
+  <rect x="12" y="23" width="2" height="1" fill="#854d0e"/>
+
+  <!-- Corner Rivets -->
+  <rect x="6" y="3" width="1" height="1" fill="#ffffff"/>
+  <rect x="25" y="3" width="1" height="1" fill="#fef08a"/>
+
+  <!-- Inner Shield Emerald Field (Base & Faceting) -->
+  <rect x="7" y="4" width="18" height="13" fill="#022c22"/>
+  <rect x="8" y="17" width="14" height="1" fill="#022c22"/>
+  <rect x="9" y="18" width="11" height="1" fill="#022c22"/>
+  <rect x="10" y="19" width="8" height="1" fill="#022c22"/>
+  <rect x="11" y="20" width="6" height="1" fill="#022c22"/>
+  <rect x="12" y="21" width="4" height="1" fill="#022c22"/>
+
+  <!-- Emerald Field Ambient Light & Gradient Tones -->
+  <rect x="7" y="4" width="16" height="1" fill="#065f46"/>
+  <rect x="7" y="5" width="2" height="10" fill="#065f46"/>
+  <rect x="8" y="5" width="1" height="8" fill="#047857"/>
+  <rect x="8" y="4" width="8" height="1" fill="#059669"/>
+
+  <!-- Radiant Ancient Monolith (Top-Left Crystal in Emerald Field) -->
+  <rect x="8" y="5" width="5" height="5" fill="#047857"/>
+  <rect x="9" y="6" width="3" height="3" fill="#10b981"/>
+  <rect x="9" y="6" width="2" height="2" fill="#34d399"/>
+  <rect x="9" y="6" width="1" height="1" fill="#a7f3d0"/>
+  <rect x="10" y="5" width="1" height="1" fill="#6ee7b7"/>
+  <rect x="11" y="5" width="1" height="1" fill="#facc15"/>
+
+  <!-- Dire Ancient Monolith (Bottom-Right Obsidian/Dark Emerald) -->
+  <rect x="19" y="11" width="5" height="5" fill="#064e3b"/>
+  <rect x="20" y="12" width="3" height="3" fill="#047857"/>
+  <rect x="21" y="13" width="2" height="2" fill="#0f766e"/>
+  <rect x="22" y="14" width="1" height="1" fill="#14b8a6"/>
+  <rect x="20" y="15" width="1" height="1" fill="#b45309"/>
+
+  <!-- DOKA River Channel (Glowing Diagonal Trench from Top-Right to Bottom-Left) -->
+  <rect x="23" y="4" width="2" height="2" fill="#0f172a"/>
+  <rect x="21" y="5" width="3" height="2" fill="#0284c7"/>
+  <rect x="19" y="7" width="3" height="2" fill="#38bdf8"/>
+  <rect x="17" y="8" width="3" height="2" fill="#06b6d4"/>
+  <rect x="14" y="10" width="4" height="2" fill="#22d3ee"/>
+  <rect x="12" y="12" width="3" height="2" fill="#06b6d4"/>
+  <rect x="10" y="13" width="3" height="2" fill="#38bdf8"/>
+  <rect x="8" y="15" width="3" height="2" fill="#0284c7"/>
+  <rect x="7" y="16" width="2" height="2" fill="#0f172a"/>
+
+  <!-- Glowing River Specular Stream -->
+  <rect x="22" y="5" width="1" height="1" fill="#e0f2fe"/>
+  <rect x="20" y="7" width="1" height="1" fill="#bae6fd"/>
+  <rect x="18" y="8" width="1" height="1" fill="#ffffff"/>
+  <rect x="13" y="12" width="1" height="1" fill="#e0f2fe"/>
+  <rect x="11" y="14" width="1" height="1" fill="#7dd3fc"/>
+  <rect x="9" y="15" width="1" height="1" fill="#38bdf8"/>
+
+  <!-- Central Radiant Eye / 3D Star Crest Gem -->
+  <rect x="14" y="9" width="4" height="4" fill="#ca8a04"/>
+  <rect x="15" y="8" width="2" height="6" fill="#eab308"/>
+  <rect x="13" y="10" width="6" height="2" fill="#eab308"/>
+  <rect x="15" y="9" width="2" height="4" fill="#fef08a"/>
+  <rect x="14" y="10" width="4" height="2" fill="#fef08a"/>
+  <rect x="15" y="10" width="2" height="2" fill="#ffffff"/>
+
+  <!-- Lower Shield Tip Shading -->
+  <rect x="12" y="21" width="2" height="2" fill="#15803d"/>
+  <rect x="13" y="22" width="2" height="2" fill="#16a34a"/>
+  <rect x="14" y="23" width="2" height="2" fill="#4ade80"/>
+  <rect x="14" y="24" width="1" height="1" fill="#86efac"/>
+  <rect x="15" y="26" width="1" height="1" fill="#fde047"/>
+
+  <!-- 3D Subtitle Ribbon / Scroll Banner at Crest Base -->
+  <!-- Left Ribbon Tail (Folded & Notched) -->
+  <rect x="1" y="23" width="5" height="5" fill="#140b02"/>
+  <rect x="1" y="24" width="1" height="3" fill="#140b02"/>
+  <rect x="2" y="24" width="4" height="3" fill="#b45309"/>
+  <rect x="3" y="24" width="3" height="1" fill="#fde047"/>
+  <rect x="2" y="25" width="1" height="1" fill="#140b02"/>
+  <rect x="3" y="26" width="3" height="1" fill="#78350f"/>
+  <!-- Left Ribbon Fold Under-Shadow -->
+  <rect x="5" y="24" width="2" height="4" fill="#381502"/>
+
+  <!-- Right Ribbon Tail (Folded & Notched) -->
+  <rect x="26" y="23" width="5" height="5" fill="#140b02"/>
+  <rect x="30" y="24" width="1" height="3" fill="#140b02"/>
+  <rect x="26" y="24" width="4" height="3" fill="#92400e"/>
+  <rect x="26" y="24" width="3" height="1" fill="#facc15"/>
+  <rect x="29" y="25" width="1" height="1" fill="#140b02"/>
+  <rect x="26" y="26" width="3" height="1" fill="#5c2606"/>
+  <!-- Right Ribbon Fold Under-Shadow -->
+  <rect x="25" y="24" width="2" height="4" fill="#290e02"/>
+
+  <!-- Main Front Subtitle Ribbon (Extruded 3D Gold Bar) -->
+  <rect x="5" y="22" width="22" height="6" fill="#140b02"/>
+  <!-- Ribbon Top Highlight Bevel -->
+  <rect x="6" y="23" width="20" height="1" fill="#fef9c3"/>
+  <rect x="6" y="24" width="20" height="3" fill="#eab308"/>
+  <rect x="6" y="24" width="2" height="3" fill="#facc15"/>
+  <rect x="24" y="24" width="2" height="3" fill="#ca8a04"/>
+  <!-- Ribbon Bottom Shadow Bevel -->
+  <rect x="6" y="26" width="20" height="1" fill="#92400e"/>
+  <rect x="7" y="27" width="18" height="1" fill="#5c2606"/>
+
+  <!-- Subtitle Ribbon Insignia: Roman Numeral "II" with Accent Studs -->
+  <!-- Left Stud -->
+  <rect x="8" y="24" width="1" height="2" fill="#fef08a"/>
+  <rect x="8" y="24" width="1" height="1" fill="#ffffff"/>
+  <rect x="9" y="25" width="1" height="1" fill="#78350f"/>
+
+  <!-- Numeral "II" -->
+  <!-- First 'I' -->
+  <rect x="13" y="24" width="3" height="1" fill="#2e1065"/>
+  <rect x="14" y="25" width="1" height="1" fill="#2e1065"/>
+  <rect x="13" y="26" width="3" height="1" fill="#2e1065"/>
+  <rect x="14" y="24" width="1" height="1" fill="#fef08a"/>
+  <!-- Second 'I' -->
+  <rect x="17" y="24" width="3" height="1" fill="#2e1065"/>
+  <rect x="18" y="25" width="1" height="1" fill="#2e1065"/>
+  <rect x="17" y="26" width="3" height="1" fill="#2e1065"/>
+  <rect x="18" y="24" width="1" height="1" fill="#fef08a"/>
+
+  <!-- Right Stud -->
+  <rect x="23" y="24" width="1" height="2" fill="#ca8a04"/>
+  <rect x="23" y="24" width="1" height="1" fill="#fef08a"/>
+  <rect x="24" y="25" width="1" height="1" fill="#5c2606"/>
+</svg>
