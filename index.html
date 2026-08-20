@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oleg Semenov (@zyr3x) — CTO &amp; Chief AI Systems Architect</title>
+  <meta name="description" content="Cosmic-tier executive portfolio of Oleg Semenov — CTO @ BelVG, Architect of Autonomous AI Swarms, MCP Infrastructure, and Enterprise High-Load Ecosystems.">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-void: #05070c;
+      --bg-surface: rgba(11, 15, 25, 0.7);
+      --bg-surface-elevated: rgba(18, 24, 38, 0.85);
+      --bg-glass: rgba(15, 23, 42, 0.65);
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(56, 189, 248, 0.25);
+      --border-active: rgba(88, 166, 255, 0.5);
+
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+
+      --cyan: #38bdf8;
+      --blue: #58a6ff;
+      --purple: #c084fc;
+      --violet: #818cf8;
+      --emerald: #34d399;
+      --amber: #fbbf24;
+      --orange: #ff6b00;
+      --rose: #f43f5e;
+
+      --font-display: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    /* Cyber Theme Variant */
+    [data-theme="cyber"] {
+      --bg-void: #080312;
+      --cyan: #00f0ff;
+      --purple: #ff007f;
+      --blue: #7928ca;
+      --border-glow: rgba(255, 0, 127, 0.3);
+    }
+
+    /* Quantum Emerald Variant */
+    [data-theme="quantum"] {
+      --bg-void: #02110c;
+      --cyan: #10b981;
+      --blue: #059669;
+      --purple: #34d399;
+      --border-glow: rgba(16, 185, 129, 0.3);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-void);
+    }
+
+    body {
+      background-color: var(--bg-void);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    ::selection {
+      background: var(--cyan);
+      color: #000;
+    }
+
+    /* Interactive Galaxy Canvas */
+    canvas#universe-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Grid & HUD Overlays */
+    .hud-grid {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+      z-index: 1;
+      mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+    }
+
+    .ambient-sphere {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.6;
+      transition: all 1s ease;
+    }
+
+    .sphere-1 {
+      top: -150px;
+      left: 15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.15), rgba(129, 140, 248, 0.05), transparent 70%);
+    }
+
+    .sphere-2 {
+      top: 45%;
+      right: -100px;
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(192, 132, 252, 0.12), rgba(56, 189, 248, 0.04), transparent 70%);
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Top Navigation HUD */
+    nav {
+      position: sticky;
+      top: 18px;
+      z-index: 100;
+      margin-bottom: 60px;
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      background: rgba(11, 15, 25, 0.75);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 9999px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 20px rgba(56, 189, 248, 0.05);
+      transition: border-color 0.3s;
+    }
+
+    .nav-bar:hover {
+      border-color: var(--border-glow);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 15px;
+      color: #000;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-item {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .nav-item:hover {
+      color: var(--cyan);
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .telemetry-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(52, 211, 153, 0.1);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      border-radius: 9999px;
+      color: var(--emerald);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .beacon {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 10px var(--emerald);
+      animation: beacon-pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes beacon-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.7); }
+    }
+
+    .theme-toggle-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      border-radius: 8px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .theme-toggle-btn:hover {
+      background: rgba(255,255,255,0.1);
+      color: var(--text-primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 32px 0 80px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 6px;
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 7vw, 84px);
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+      background: linear-gradient(180deg, #ffffff 40%, rgba(255,255,255,0.65) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-gradient-text {
+      background: linear-gradient(90deg, var(--cyan) 0%, var(--violet) 50%, var(--purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .hero-desc {
+      font-size: clamp(17px, 2vw, 22px);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 900px;
+      margin-bottom: 40px;
+      font-weight: 400;
+      letter-spacing: -0.3px;
+    }
+
+    .hero-desc strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 24px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-glow {
+      background: linear-gradient(135deg, #ffffff, #e2e8f0);
+      color: #05070c;
+      box-shadow: 0 0 24px rgba(255, 255, 255, 0.25);
+    }
+    .btn-glow:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 32px rgba(255, 255, 255, 0.4);
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      backdrop-filter: blur(16px);
+    }
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--border-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-belvg {
+      background: rgba(255, 107, 0, 0.12);
+      border: 1px solid rgba(255, 107, 0, 0.35);
+      color: #ff9142;
+    }
+    .btn-belvg:hover {
+      background: rgba(255, 107, 0, 0.22);
+      color: #ffaa6e;
+      box-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Live Telemetry Metric Strip */
+    .telemetry-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 80px;
+    }
+
+    .telemetry-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .telemetry-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    }
+
+    .telemetry-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+    }
+
+    .telemetry-number {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 3.5vw, 44px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .telemetry-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .telemetry-detail {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Section Headings */
+    .section-head {
+      margin-bottom: 36px;
+    }
+
+    .section-index {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--cyan);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-headline {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.2vw, 38px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--text-primary);
+    }
+
+    /* Bento 3D Grid */
+    .bento-showcase {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+      margin-bottom: 80px;
+      perspective: 1200px;
+    }
+
+    .bento-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 36px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: border-color 0.3s, transform 0.15s ease-out, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .bento-card:hover {
+      border-color: var(--border-active);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(56, 189, 248, 0.08);
+    }
+
+    .span-8 { grid-column: span 8; }
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .span-12 { grid-column: span 12; }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      width: fit-content;
+    }
+
+    .badge-orange { background: rgba(255, 107, 0, 0.12); color: #ff8c38; border: 1px solid rgba(255, 107, 0, 0.3); }
+    .badge-cyan { background: rgba(56, 189, 248, 0.12); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .badge-purple { background: rgba(192, 132, 252, 0.12); color: #c084fc; border: 1px solid rgba(192, 132, 252, 0.3); }
+    .badge-amber { background: rgba(251, 191, 36, 0.12); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+    .badge-emerald { background: rgba(52, 211, 153, 0.12); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
+
+    .bento-card h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+
+    .bento-card h3 a {
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .bento-card:hover h3 a { color: var(--cyan); }
+
+    .bento-card p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .tech-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tech-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 11px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      transition: all 0.2s;
+    }
+
+    .bento-card:hover .tech-pill {
+      border-color: rgba(255,255,255,0.12);
+      color: var(--text-primary);
+    }
+
+    /* Live Audio ML Visualizer Preview (for deepmine.by) */
+    .audio-visualizer-preview {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      height: 24px;
+      margin-bottom: 16px;
+    }
+
+    .audio-bar {
+      width: 3px;
+      background: var(--purple);
+      border-radius: 2px;
+      animation: sound-bounce 1.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes sound-bounce {
+      0% { height: 4px; }
+      100% { height: 24px; }
+    }
+
+    /* Interactive Quantum Terminal (CLI Console) */
+    .terminal-wrapper {
+      background: #070a12;
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 80px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .terminal-topbar {
+      background: #0f1422;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .window-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .win-btn {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+
+    .terminal-session-info {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .terminal-content {
+      padding: 28px;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      line-height: 1.7;
+      min-height: 280px;
+      color: #94a3b8;
+    }
+
+    .cli-prompt {
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    .cli-output {
+      margin: 8px 0 16px;
+      color: #cbd5e1;
+    }
+
+    .cli-input-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cli-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      flex: 1;
+    }
+
+    /* Complete Tech Stack Matrix */
+    .stack-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 80px;
+    }
+
+    .stack-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 28px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: all 0.3s;
+    }
+
+    .stack-box:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-2px);
+    }
+
+    .stack-box h4 {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stack-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      transition: all 0.15s;
+    }
+
+    .pill-item:hover {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: var(--cyan);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 60px 0 80px;
+      text-align: center;
+    }
+
+    .footer-quote {
+      font-size: 16px;
+      color: var(--text-secondary);
+      font-style: italic;
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+
+    .footer-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 960px) {
+      .span-8, .span-4, .span-6 { grid-column: span 12; }
+      .telemetry-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .telemetry-strip { grid-template-columns: 1fr; }
+      .nav-menu { display: none; }
+      .bento-card { padding: 24px; }
+      .hero { padding: 20px 0 50px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Dynamic WebGL / Canvas Singularity -->
+  <canvas id="universe-canvas"></canvas>
+  <div class="hud-grid"></div>
+  <div class="ambient-sphere sphere-1"></div>
+  <div class="ambient-sphere sphere-2"></div>
+
+  <div class="container">
+    <!-- Top Nav HUD -->
+    <nav>
+      <div class="nav-bar">
+        <a href="#" class="brand">
+          <div class="brand-logo">Z</div>
+          <span class="brand-name">Oleg Semenov</span>
+        </a>
+        <div class="nav-menu">
+          <a href="#platforms" class="nav-item">Platforms</a>
+          <a href="#belvg" class="nav-item">BelVG</a>
+          <a href="#tooling" class="nav-item">AI Swarms</a>
+          <a href="#matrix" class="nav-item">Stack Matrix</a>
+          <a href="#console" class="nav-item">Terminal</a>
+        </div>
+        <div class="nav-controls">
+          <div class="telemetry-pill">
+            <span class="beacon"></span>
+            SYSTEM : ONLINE
+          </div>
+          <button class="theme-toggle-btn" id="themeBtn" title="Switch Theme (Obsidian / Cyber / Quantum)">⚡</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-eyebrow">
+        <span>⚡ Executive AI Engineering &amp; High-Load Systems</span>
+      </div>
+      <h1 class="hero-title">
+        Architecting <span class="hero-gradient-text">Autonomous Intelligence</span> &amp; Enterprise Platforms.
+      </h1>
+      <p class="hero-desc">
+        <strong>Chief Technology Officer (CTO) @ <a href="https://belvg.com" target="_blank" style="color: var(--orange); text-decoration: none;">BelVG</a></strong> and Head of AI Software Engineering based in Riga, Latvia 🇱🇻. Over 15 years leading enterprise eCommerce architectures, Model Context Protocol (MCP) toolchains, and multi-agent AI ecosystems.
+      </p>
+      <div class="hero-cta-group">
+        <a href="https://belvg.com" target="_blank" class="btn btn-belvg">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          BelVG Enterprise Core
+        </a>
+        <a href="https://github.com/zyr3x" target="_blank" class="btn btn-glow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Profile (@zyr3x)
+        </a>
+        <a href="https://www.linkedin.com/in/oleg-semenov-belvg/" target="_blank" class="btn btn-glass">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          LinkedIn
+        </a>
+        <a href="#console" class="btn btn-glass" style="font-family: var(--font-mono);">
+          &gt; Open Terminal
+        </a>
+      </div>
+    </section>
+
+    <!-- Key Live Telemetry Metrics -->
+    <section class="telemetry-strip">
+      <div class="telemetry-card">
+        <div class="telemetry-number" style="color: var(--cyan);">3,200+</div>
+        <div class="telemetry-label">Annual Contributions</div>
+        <div class="telemetry-detail">High-velocity commits across production repos, enterprise orgs, and OSS.</div>
+      </div>
+      <div class="telemetry-card">
+        <div class="telemetry-number" style="color: var(--emerald);">15+ Yrs</div>
+        <div class="telemetry-label">Enterprise Architecture</div>
+        <div class="telemetry-detail">High-load eCommerce ecosystems, ERP/CRM middleware, and distributed cloud backends.</div>
+      </div>
+      <div class="telemetry-card">
+        <div class="telemetry-number" style="color: var(--amber);">75+</div>
+        <div class="telemetry-label">Repositories Built</div>
+        <div class="telemetry-detail">AI agent bridges, proxies, specialized SDKs, and enterprise modules.</div>
+      </div>
+      <div class="telemetry-card">
+        <div class="telemetry-number" style="color: var(--purple);">AI Swarms</div>
+        <div class="telemetry-label">Multi-Agent &amp; MCP</div>
+        <div class="telemetry-detail">Model Context Protocol toolchains, autonomous LLM swarms, and self-healing systems.</div>
+      </div>
+    </section>
+
+    <!-- Flagship Bento Showcase with 3D Tilt -->
+    <div class="section-head" id="platforms">
+      <div class="section-index">// 01. Flagship Digital Ecosystem</div>
+      <h2 class="section-headline">Production Platforms &amp; Products</h2>
+    </div>
+
+    <section class="bento-showcase">
+      <!-- BelVG Enterprise Core (Col 8) -->
+      <div class="bento-card span-8" id="belvg" data-tilt>
+        <div>
+          <div class="card-badge badge-orange">🏢 Enterprise Flagship • CTO</div>
+          <h3><a href="https://belvg.com" target="_blank">BelVG Enterprise eCommerce Ecosystems ↗</a></h3>
+          <p>
+            15+ years directing enterprise technology strategy and engineering leadership across high-load global commerce. Architecting multi-million dollar catalog indexing engines, microservice orchestrations, resilient payment/order pipelines, and custom extensions on Magento 2, Sylius, and Prestashop.
+          </p>
+        </div>
+        <div class="tech-pill-row">
+          <span class="tech-pill">Magento 2 Enterprise</span>
+          <span class="tech-pill">Sylius</span>
+          <span class="tech-pill">Prestashop</span>
+          <span class="tech-pill">High-Load Microservices</span>
+          <span class="tech-pill">Elasticsearch / OpenSearch</span>
+          <span class="tech-pill">Redis Cluster</span>
+          <span class="tech-pill">Varnish Cache</span>
+        </div>
+      </div>
+
+      <!-- fnxt.app (Col 4) -->
+      <div class="bento-card span-4" data-tilt>
+        <div>
+          <div class="card-badge badge-cyan">⚡ Autonomous AI</div>
+          <h3><a href="https://fnxt.app" target="_blank">fnxt.app ↗</a></h3>
+          <p>
+            Next-generation AI automation platform built for high-throughput autonomous workflow execution, intelligent data enrichment, and reactive cloud integrations.
+          </p>
+        </div>
+        <div class="tech-pill-row">
+          <span class="tech-pill">FastAPI</span>
+          <span class="tech-pill">Cloudflare</span>
+          <span class="tech-pill">LLM Toolchains</span>
+        </div>
+      </div>
+
+      <!-- deepmine.by (Col 6) -->
+      <div class="bento-card span-6" data-tilt>
+        <div>
+          <div class="card-badge badge-purple">🎙️ Media &amp; Audio AI</div>
+          <h3><a href="https://deepmine.by" target="_blank">deepmine.by ↗</a></h3>
+          <div class="audio-visualizer-preview">
+            <div class="audio-bar" style="animation-delay: 0.1s;"></div>
+            <div class="audio-bar" style="animation-delay: 0.4s;"></div>
+            <div class="audio-bar" style="animation-delay: 0.2s;"></div>
+            <div class="audio-bar" style="animation-delay: 0.7s;"></div>
+            <div class="audio-bar" style="animation-delay: 0.3s;"></div>
+            <div class="audio-bar" style="animation-delay: 0.5s;"></div>
+            <div class="audio-bar" style="animation-delay: 0.2s;"></div>
+            <div class="audio-bar" style="animation-delay: 0.6s;"></div>
+          </div>
+          <p>
+            Advanced media intelligence, speech processing, and audio synthesis pipelines for automated content transcription, voice generation, and acoustic telemetry.
+          </p>
+        </div>
+        <div class="tech-pill-row">
+          <span class="tech-pill">PyTorch</span>
+          <span class="tech-pill">Whisper</span>
+          <span class="tech-pill">Audio Processing</span>
+          <span class="tech-pill">CUDA</span>
+        </div>
+      </div>
+
+      <!-- doka2.com (Col 6) -->
+      <div class="bento-card span-6" data-tilt>
+        <div>
+          <div class="card-badge badge-amber">🎮 Interactive Gaming</div>
+          <h3><a href="https://doka2.com" target="_blank">doka2.com ↗</a></h3>
+          <p>
+            Real-time web gaming ecosystem and interactive community network engineered for high-concurrency engagement and sub-millisecond client-server state replication.
+          </p>
+        </div>
+        <div class="tech-pill-row">
+          <span class="tech-pill">WebSockets</span>
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">Real-Time Sync</span>
+          <span class="tech-pill">Canvas / WebGL</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Open Source & AI Middleware -->
+    <div class="section-head" id="tooling">
+      <div class="section-index">// 02. AI Middleware &amp; Agent Bridges</div>
+      <h2 class="section-headline">Open Source Tooling &amp; Swarms</h2>
+    </div>
+
+    <section class="bento-showcase">
+      <!-- opengeminiai-studio -->
+      <div class="bento-card span-6" data-tilt>
+        <div>
+          <div class="card-badge badge-emerald">🌟 OpenAI ↔ Gemini Bridge</div>
+          <h3><a href="https://github.com/zyr3x/opengeminiai-studio" target="_blank">opengeminiai-studio ↗</a></h3>
+          <p>
+            High-performance, ultra-lightweight proxy bridging Google Gemini API with any OpenAI API-compatible client or developer tool, enabling seamless model interchangeability with zero refactoring.
+          </p>
+        </div>
+        <div class="tech-pill-row">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">FastAPI</span>
+          <span class="tech-pill">Google Gemini SDK</span>
+          <span class="tech-pill">OpenAI Compatibility</span>
+        </div>
+      </div>
+
+      <!-- antigravity-telegram-bridge -->
+      <div class="bento-card span-6" data-tilt>
+        <div>
+          <div class="card-badge badge-cyan">🤖 Autonomous Agent Interface</div>
+          <h3><a href="https://github.com/zyr3x/antigravity-telegram-bridge" target="_blank">antigravity-telegram-bridge ↗</a></h3>
+          <p>
+            Universal Telegram orchestration interface for Google Antigravity autonomous AI agents, featuring bidirectional tool execution, agent telemetry, and reactive async event alerts.
+          </p>
+        </div>
+        <div class="tech-pill-row">
+          <span class="tech-pill">Antigravity SDK</span>
+          <span class="tech-pill">Telegram Bot API</span>
+          <span class="tech-pill">Asyncio</span>
+          <span class="tech-pill">Tool Calling</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Complete Tech Matrix -->
+    <div class="section-head" id="matrix">
+      <div class="section-index">// 03. Technical Capabilities</div>
+      <h2 class="section-headline">Comprehensive Architecture Matrix</h2>
+    </div>
+
+    <section class="stack-layout">
+      <div class="stack-box">
+        <h4>🤖 AI, LLMs &amp; Agents</h4>
+        <div class="stack-pills">
+          <span class="pill-item">Google Gemini</span>
+          <span class="pill-item">Google Vertex AI</span>
+          <span class="pill-item">Anthropic Claude</span>
+          <span class="pill-item">OpenAI GPT-4o</span>
+          <span class="pill-item">MCP Protocol</span>
+          <span class="pill-item">FastMCP</span>
+          <span class="pill-item">Antigravity SDK</span>
+          <span class="pill-item">Ollama</span>
+          <span class="pill-item">LangChain</span>
+          <span class="pill-item">PyTorch</span>
+        </div>
+      </div>
+
+      <div class="stack-box">
+        <h4>🧠 Vector DB &amp; Data</h4>
+        <div class="stack-pills">
+          <span class="pill-item">ChromaDB</span>
+          <span class="pill-item">Qdrant</span>
+          <span class="pill-item">Elasticsearch</span>
+          <span class="pill-item">OpenSearch</span>
+          <span class="pill-item">PostgreSQL / pgvector</span>
+          <span class="pill-item">Redis / KeyDB</span>
+          <span class="pill-item">MySQL / MariaDB</span>
+          <span class="pill-item">SQLite / aiosqlite</span>
+        </div>
+      </div>
+
+      <div class="stack-box">
+        <h4>☁️ Cloud &amp; Infra</h4>
+        <div class="stack-pills">
+          <span class="pill-item">Google Cloud Platform</span>
+          <span class="pill-item">AWS</span>
+          <span class="pill-item">Cloudflare &amp; Workers</span>
+          <span class="pill-item">Docker &amp; Compose</span>
+          <span class="pill-item">Kubernetes</span>
+          <span class="pill-item">LXD / Linux Containers</span>
+          <span class="pill-item">Nginx Reverse Proxy</span>
+          <span class="pill-item">RabbitMQ &amp; Celery</span>
+          <span class="pill-item">Varnish Cache</span>
+          <span class="pill-item">Linux Kernel / POSIX</span>
+        </div>
+      </div>
+
+      <div class="stack-box">
+        <h4>💻 Languages &amp; Core</h4>
+        <div class="stack-pills">
+          <span class="pill-item">Python</span>
+          <span class="pill-item">TypeScript</span>
+          <span class="pill-item">JavaScript</span>
+          <span class="pill-item">PHP 8.x</span>
+          <span class="pill-item">Go</span>
+          <span class="pill-item">Bash / Shell</span>
+          <span class="pill-item">C / C++</span>
+          <span class="pill-item">SQL</span>
+        </div>
+      </div>
+
+      <div class="stack-box">
+        <h4>🏗️ Core &amp; Commerce</h4>
+        <div class="stack-pills">
+          <span class="pill-item">FastAPI</span>
+          <span class="pill-item">Node.js</span>
+          <span class="pill-item">Flask</span>
+          <span class="pill-item">Symfony</span>
+          <span class="pill-item">Laravel</span>
+          <span class="pill-item">Magento 2 Enterprise</span>
+          <span class="pill-item">Sylius</span>
+          <span class="pill-item">Prestashop</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Quantum Terminal -->
+    <div class="section-head" id="console">
+      <div class="section-index">// 04. Interactive Agent Console</div>
+      <h2 class="section-headline">Quantum Terminal Telemetry</h2>
+    </div>
+
+    <div class="terminal-wrapper">
+      <div class="terminal-topbar">
+        <div class="window-controls">
+          <div class="win-btn" style="background: #ff5f56;"></div>
+          <div class="win-btn" style="background: #ffbd2e;"></div>
+          <div class="win-btn" style="background: #27c93f;"></div>
+        </div>
+        <div class="terminal-session-info">zyr3x@gemini-core:~$ (active-session: mcp-v3.2)</div>
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--emerald);">● SECURE CHANNEL</div>
+      </div>
+      <div class="terminal-content" id="terminalLog">
+        <div><span style="color: var(--cyan); font-weight: bold;">Zyr3x Quantum Telemetry CLI [Version 2.4.0-release]</span></div>
+        <div>Type <span style="color: var(--amber); font-weight: bold;">'help'</span> to see available commands or explore systems.</div>
+        <br>
+        <div class="cli-output">
+          <div><span style="color: var(--purple);">[SYSTEM]</span> Identity: Oleg Semenov | CTO @ BelVG | Head of AI Software Engineering</div>
+          <div><span style="color: var(--emerald);">[STATUS]</span> All agent nodes and enterprise architectures operating at nominal capacity.</div>
+        </div>
+      </div>
+      <div style="padding: 0 28px 24px;">
+        <div class="cli-input-line">
+          <span class="cli-prompt">zyr3x@core:~$</span>
+          <input type="text" class="cli-input" id="cliInput" placeholder="try 'projects', 'stack', 'belvg', 'contact' or 'clear'..." autofocus>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p class="footer-quote">"Engineering autonomous intelligence and scalable architectures at the intersection of AI and commerce."</p>
+      <p class="footer-meta">&copy; 2026 Oleg Semenov (@zyr3x) • CTO @ BelVG • Riga, Latvia 🇱🇻</p>
+    </footer>
+  </div>
+
+  <!-- Cosmic Particle Singularity & 3D Tilt Script -->
+  <script>
+    // 1. Dynamic Interactive Galaxy Canvas
+    const canvas = document.getElementById('universe-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+    let mouse = { x: null, y: null, radius: 160 };
+
+    function initCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', initCanvas);
+    initCanvas();
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.x;
+      mouse.y = e.y;
+    });
+
+    window.addEventListener('mouseout', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    class Star {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2 + 0.4;
+        this.baseX = this.x;
+        this.baseY = this.y;
+        this.density = (Math.random() * 30) + 1;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.color = Math.random() > 0.6 ? 'rgba(56, 189, 248, 0.7)' : (Math.random() > 0.5 ? 'rgba(192, 132, 252, 0.6)' : 'rgba(255, 255, 255, 0.5)');
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+
+        if (mouse.x != null) {
+          let dx = mouse.x - this.x;
+          let dy = mouse.y - this.y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < mouse.radius) {
+            const force = (mouse.radius - distance) / mouse.radius;
+            const directionX = (dx / distance) * force * this.density * 0.6;
+            const directionY = (dy / distance) * force * this.density * 0.6;
+            this.x -= directionX;
+            this.y -= directionY;
+          }
+        }
+      }
+    }
+
+    const starCount = Math.min(Math.floor(window.innerWidth / 16), 85);
+    for (let i = 0; i < starCount; i++) {
+      particles.push(new Star());
+    }
+
+    function renderGalaxy() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].draw();
+        particles[i].update();
+        for (let j = i + 1; j < particles.length; j++) {
+          let dx = particles[i].x - particles[j].x;
+          let dy = particles[i].y - particles[j].y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 130) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(56, 189, 248, ${0.18 * (1 - distance / 130)})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(renderGalaxy);
+    }
+    renderGalaxy();
+
+    // 2. 3D Card Tilt Physics
+    document.querySelectorAll('[data-tilt]').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -5;
+        const rotateY = ((x - centerX) / centerX) * 5;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      });
+    });
+
+    // 3. Interactive CLI Console
+    const terminalLog = document.getElementById('terminalLog');
+    const cliInput = document.getElementById('cliInput');
+
+    const COMMANDS = {
+      help: () => `
+Available Commands:
+  • <span style="color: var(--cyan);">projects</span>   - List flagship production platforms (fnxt.app, deepmine.by, doka2.com)
+  • <span style="color: var(--orange);">belvg</span>      - View BelVG enterprise eCommerce & architecture scope
+  • <span style="color: var(--purple);">tooling</span>    - Inspect open-source AI proxies and Antigravity bridges
+  • <span style="color: var(--emerald);">stack</span>      - Display complete architecture & technical matrix
+  • <span style="color: var(--amber);">contact</span>    - View verified LinkedIn, GitHub & business channels
+  • <span style="color: var(--cyan);">clear</span>      - Clear terminal screen
+  • <span style="color: var(--rose);">theme</span>      - Cycle theme mode: 'default', 'cyber', 'quantum'`,
+      
+      projects: () => `
+<span style="color: var(--cyan); font-weight: bold;">[FLAGSHIP PLATFORMS]</span>
+  • <a href="https://fnxt.app" target="_blank" style="color: var(--cyan);">fnxt.app</a>       - Next-Gen Autonomous AI Automation & Workflow Execution Platform
+  • <a href="https://deepmine.by" target="_blank" style="color: var(--purple);">deepmine.by</a>   - Media Intelligence, PyTorch & Whisper Speech Synthesis
+  • <a href="https://doka2.com" target="_blank" style="color: var(--amber);">doka2.com</a>      - Interactive Gaming & Real-Time WebSocket Network
+  • <a href="https://belvg.com" target="_blank" style="color: var(--orange);">belvg.com</a>      - High-Load Enterprise eCommerce Architecture & Microservices`,
+
+      belvg: () => `
+<span style="color: var(--orange); font-weight: bold;">[BELVG ENTERPRISE CORE]</span>
+  Role: Chief Technology Officer (CTO)
+  Domain: Enterprise eCommerce (Magento 2, Sylius, Prestashop, Custom Microservices)
+  Scale: 15+ years delivering high-throughput retail platforms and ERP/CRM integrations
+  URL: <a href="https://belvg.com" target="_blank" style="color: var(--orange);">https://belvg.com</a>`,
+
+      tooling: () => `
+<span style="color: var(--emerald); font-weight: bold;">[OPEN SOURCE & AI BRIDGES]</span>
+  • <a href="https://github.com/zyr3x/opengeminiai-studio" target="_blank" style="color: var(--emerald);">opengeminiai-studio</a>       - Seamless Gemini API proxy for OpenAI clients
+  • <a href="https://github.com/zyr3x/antigravity-telegram-bridge" target="_blank" style="color: var(--cyan);">antigravity-telegram-bridge</a> - Bidirectional Telegram interface for Antigravity AI agents`,
+
+      stack: () => `
+<span style="color: var(--cyan); font-weight: bold;">[ARCHITECTURE TOOLBELT]</span>
+  • AI & Agents: Google Gemini, Vertex AI, Claude, OpenAI, FastMCP, Antigravity, PyTorch, LangChain
+  • Vector & Data: ChromaDB, Qdrant, Elasticsearch, OpenSearch, PostgreSQL (pgvector), Redis, MySQL
+  • Cloud & Infra: GCP, AWS, Cloudflare, Docker, Kubernetes, LXD/LXC, Nginx, RabbitMQ, Linux
+  • Languages: Python, TypeScript, JavaScript, PHP, Go, Bash, C/C++, SQL`,
+
+      contact: () => `
+<span style="color: var(--amber); font-weight: bold;">[CHANNELS]</span>
+  • LinkedIn: <a href="https://www.linkedin.com/in/oleg-semenov-belvg/" target="_blank" style="color: var(--cyan);">https://www.linkedin.com/in/oleg-semenov-belvg/</a>
+  • GitHub:   <a href="https://github.com/zyr3x" target="_blank" style="color: var(--cyan);">https://github.com/zyr3x</a>
+  • Company:  <a href="https://belvg.com" target="_blank" style="color: var(--orange);">https://belvg.com</a>
+  • Location: Riga, Latvia 🇱🇻`,
+
+      theme: () => {
+        cycleTheme();
+        return `<span style="color: var(--purple);">Theme mode updated successfully.</span>`;
+      }
+    };
+
+    cliInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const cmd = cliInput.value.trim().toLowerCase();
+        cliInput.value = '';
+
+        const line = document.createElement('div');
+        line.innerHTML = `<span class="cli-prompt">zyr3x@core:~$</span> <span style="color:#fff;">${cmd}</span>`;
+        terminalLog.appendChild(line);
+
+        if (cmd === 'clear') {
+          terminalLog.innerHTML = '';
+        } else if (COMMANDS[cmd]) {
+          const res = document.createElement('div');
+          res.className = 'cli-output';
+          res.innerHTML = COMMANDS[cmd]();
+          terminalLog.appendChild(res);
+        } else if (cmd !== '') {
+          const err = document.createElement('div');
+          err.className = 'cli-output';
+          err.innerHTML = `<span style="color: var(--rose);">Command not recognized: '${cmd}'. Type 'help' for available commands.</span>`;
+          terminalLog.appendChild(err);
+        }
+        terminalLog.scrollTop = terminalLog.scrollHeight;
+      }
+    });
+
+    // 4. Theme Cycling Engine
+    const themes = ['default', 'cyber', 'quantum'];
+    let currentThemeIndex = 0;
+
+    function cycleTheme() {
+      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+      const theme = themes[currentThemeIndex];
+      if (theme === 'default') {
+        document.documentElement.removeAttribute('data-theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', theme);
+      }
+    }
+
+    document.getElementById('themeBtn').addEventListener('click', cycleTheme);
+  </script>
+</body>
+</html>
