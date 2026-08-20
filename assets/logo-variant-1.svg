@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240" width="100%" height="100%">
+  <defs>
+    <!-- Multi-Stop Titanium Gradient with Dark Rim Contrast -->
+    <linearGradient id="v1Titanium" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="25%" stop-color="#e2e8f0" />
+      <stop offset="48%" stop-color="#94a3b8" />
+      <stop offset="52%" stop-color="#ffffff" />
+      <stop offset="78%" stop-color="#475569" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <!-- Dark Contrast Stroke for Light Background Visibility -->
+    <linearGradient id="v1Rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="v1Orange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff9142" />
+      <stop offset="100%" stop-color="#ff5500" />
+    </linearGradient>
+  </defs>
+
+  <!-- Variant 1: Dual-Tone Titanium Hull (Visible on Black & White) -->
+  <g transform="translate(30, 195)" stroke="url(#v1Rim)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Letter Z -->
+    <path d="M 10 -150 L 145 -150 L 55 -25 L 150 -25 L 140 0 L -5 0 L 85 -125 L 10 -125 Z" fill="url(#v1Titanium)" />
+    <path d="M 10 -150 L 145 -150 L 130 -142 L 22 -142 Z" fill="#ffffff" stroke="none" />
+    <path d="M 85 -125 L 55 -25" stroke="#0f172a" stroke-width="2" />
+
+    <!-- Letter R -->
+    <g transform="translate(180, 0)">
+      <path d="M 0 0 L 0 -150 L 95 -150 C 135 -150 155 -130 155 -95 C 155 -68 138 -52 110 -46 L 160 0 L 122 0 L 78 -42 L 35 -42 L 35 0 Z M 35 -72 L 90 -72 C 112 -72 120 -82 120 -95 C 120 -108 112 -118 90 -118 L 35 -118 Z" fill="url(#v1Titanium)" />
+      <path d="M 0 -150 L 95 -150 C 130 -150 148 -135 150 -105 L 142 -105 C 140 -130 125 -142 95 -142 L 8 -142 L 8 0 L 0 0 Z" fill="#ffffff" stroke="none" fill-opacity="0.8" />
+    </g>
+
+    <!-- Letter X -->
+    <g transform="translate(375, 0)">
+      <path d="M 0 0 L 58 -75 L 2 -150 L 42 -150 L 80 -98 L 118 -150 L 158 -150 L 102 -75 L 160 0 L 120 0 L 80 -52 L 40 0 Z" fill="url(#v1Titanium)" />
+      <polygon points="2,-150 42,-150 36,-142 10,-142" fill="#ffffff" stroke="none" />
+      <polygon points="118,-150 158,-150 150,-142 124,-142" fill="#ffffff" stroke="none" />
+      <!-- Nexus Core -->
+      <polygon points="80,-85 89,-75 80,-65 71,-75" fill="url(#v1Orange)" stroke="#0f172a" stroke-width="1.5" />
+      <circle cx="80" cy="-75" r="2.5" fill="#ffffff" stroke="none" />
+    </g>
+  </g>
+</svg>

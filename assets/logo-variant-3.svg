@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="v3Platinum" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="50%" stop-color="#cbd5e1" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+
+    <linearGradient id="v3Gunmetal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+
+    <linearGradient id="v3Orange" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff6b00" />
+      <stop offset="100%" stop-color="#ffa142" />
+    </linearGradient>
+  </defs>
+
+  <!-- Variant 3: Apex Minimalist Dual-Layer Contour (Black & White Proof) -->
+  <g transform="translate(30, 195)">
+    <!-- Base Gunmetal Body -->
+    <g fill="url(#v3Gunmetal)" stroke="#ffffff" stroke-width="3.5" stroke-linejoin="round">
+      <!-- Z -->
+      <path d="M 10 -150 L 145 -150 L 55 -25 L 150 -25 L 140 0 L -5 0 L 85 -125 L 10 -125 Z" />
+      
+      <!-- R -->
+      <g transform="translate(180, 0)">
+        <path d="M 0 0 L 0 -150 L 95 -150 C 135 -150 155 -130 155 -95 C 155 -68 138 -52 110 -46 L 160 0 L 122 0 L 78 -42 L 35 -42 L 35 0 Z M 35 -72 L 90 -72 C 112 -72 120 -82 120 -95 C 120 -108 112 -118 90 -118 L 35 -118 Z" />
+      </g>
+
+      <!-- X -->
+      <g transform="translate(375, 0)">
+        <path d="M 0 0 L 58 -75 L 2 -150 L 42 -150 L 80 -98 L 118 -150 L 158 -150 L 102 -75 L 160 0 L 120 0 L 80 -52 L 40 0 Z" />
+      </g>
+    </g>
+
+    <!-- Inset Platinum Aerospace Core Beams -->
+    <g fill="none" stroke="url(#v3Platinum)" stroke-width="2">
+      <path d="M 30 -140 L 125 -140 L 45 -25 L 125 -25" />
+      <path d="M 195 -140 L 195 -10 M 195 -140 L 260 -140 C 290 -140 305 -125 305 -95 C 305 -75 290 -60 260 -60 L 195 -60" />
+      <path d="M 390 -140 L 515 -10 M 515 -140 L 390 -10" />
+    </g>
+
+    <!-- Orange Core Node -->
+    <g transform="translate(375, 0)">
+      <polygon points="80,-85 89,-75 80,-65 71,-75" fill="url(#v3Orange)" stroke="#090d16" stroke-width="1.5" />
+      <circle cx="80" cy="-75" r="2.5" fill="#ffffff" />
+    </g>
+  </g>
+</svg>
