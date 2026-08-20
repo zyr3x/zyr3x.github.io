@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oleg Semenov — CTO &amp; Head of AI Software Engineering</title>
+  <meta name="description" content="Executive portfolio of Oleg Semenov (@zyr3x) — CTO at BelVG, Enterprise Architect, and AI Systems Engineer with 15+ years of production experience.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" type="image/svg+xml" href="assets/logo-icon.svg">
   <link rel="apple-touch-icon" href="assets/logo-icon.svg">
@@ -21,7 +22,7 @@
       --bg-glass-hover: rgba(22, 30, 48, 0.85);
       
       --border-glass: rgba(255, 255, 255, 0.08);
-      --border-highlight: rgba(56, 189, 248, 0.35);
+      --border-highlight: rgba(56, 189, 248, 0.4);
 
       --text-primary: #f8fafc;
       --text-secondary: #94a3b8;
@@ -110,6 +111,31 @@
       z-index: 1;
     }
 
+    /* Unified Glass Card Primitive */
+    .glass-card {
+      background: var(--bg-glass-card);
+      border: 1px solid var(--border-glass);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    }
+
+    .glass-card:hover {
+      border-color: var(--border-highlight);
+      transform: translateY(-4px);
+      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
     /* Floating Frosted Glass Navigation */
     nav {
       position: sticky;
@@ -124,16 +150,16 @@
       justify-content: space-between;
       padding: 12px 24px;
       background: var(--bg-glass);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
       border: 1px solid var(--border-glass);
       border-radius: 100px;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
       transition: border-color 0.25s;
     }
 
     .nav-glass:hover {
-      border-color: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.18);
     }
 
     .brand {
@@ -224,14 +250,12 @@
     }
 
     .hero h1 {
-      font-size: clamp(40px, 6.5vw, 72px);
+      font-size: clamp(38px, 6vw, 68px);
       font-weight: 900;
-      line-height: 1.05;
+      line-height: 1.08;
       letter-spacing: -2px;
       margin-bottom: 24px;
-      background: linear-gradient(180deg, #ffffff 40%, #94a3b8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #ffffff;
     }
 
     .hero-lead {
@@ -313,28 +337,8 @@
     }
 
     .kpi-card {
-      background: var(--bg-glass-card);
-      border: 1px solid var(--border-glass);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 24px;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .kpi-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    }
-
-    .kpi-card:hover {
-      border-color: var(--border-highlight);
-      transform: translateY(-2px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
     }
 
     .kpi-val {
@@ -394,24 +398,11 @@
     .col-12 { grid-column: span 12; }
 
     .bento-card {
-      background: var(--bg-glass-card);
-      border: 1px solid var(--border-glass);
       border-radius: 20px;
       padding: 32px;
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .bento-card:hover {
-      border-color: var(--border-highlight);
-      transform: translateY(-3px);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
     }
 
     .badge-pill {
@@ -476,7 +467,7 @@
     }
 
     .bento-card:hover .glass-tag {
-      border-color: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.15);
       color: #fff;
     }
 
@@ -489,17 +480,8 @@
     }
 
     .stack-glass {
-      background: var(--bg-glass-card);
-      border: 1px solid var(--border-glass);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 24px;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      transition: border-color 0.2s;
-    }
-
-    .stack-glass:hover {
-      border-color: rgba(255, 255, 255, 0.15);
     }
 
     .stack-glass h4 {
@@ -539,19 +521,14 @@
       transform: translateY(-1px);
     }
 
-    /* Clean Glass Terminal */
+    /* Clean Frosted Glass Terminal CLI */
     .terminal-glass {
-      background: rgba(7, 10, 18, 0.85);
-      border: 1px solid var(--border-glass);
-      border-radius: 16px;
-      overflow: hidden;
+      border-radius: 18px;
       margin-bottom: 72px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(24px);
     }
 
     .terminal-header {
-      background: rgba(14, 20, 34, 0.8);
+      background: rgba(14, 20, 34, 0.85);
       border-bottom: 1px solid var(--border-glass);
       padding: 12px 20px;
       display: flex;
@@ -575,13 +552,40 @@
       font-family: var(--font-mono);
       font-size: 13.5px;
       line-height: 1.7;
+      min-height: 220px;
+      max-height: 380px;
+      overflow-y: auto;
       color: #94a3b8;
     }
 
-    .t-key { color: var(--cyan); }
-    .t-str { color: #a5d6ff; }
-    .t-str-alt { color: var(--purple); }
-    .t-num { color: var(--amber); }
+    .cli-output-line {
+      margin: 6px 0 14px;
+      color: #cbd5e1;
+    }
+
+    .terminal-input-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 24px 20px;
+    }
+
+    .t-prompt {
+      color: var(--cyan);
+      font-weight: 700;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+    }
+
+    .t-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      flex: 1;
+    }
 
     /* Footer */
     footer {
@@ -631,6 +635,7 @@
           <a href="#belvg" class="nav-item">BelVG</a>
           <a href="#tooling" class="nav-item">AI Tooling</a>
           <a href="#stack" class="nav-item">Tech Matrix</a>
+          <a href="#terminal" class="nav-item">Console</a>
         </div>
         <div class="status-pill">
           <span class="status-beacon"></span>
@@ -645,9 +650,11 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
         <span>Executive Architecture &amp; AI Engineering</span>
       </div>
-      <h1>Oleg Semenov</h1>
+      <h1>
+        Architecting <span style="background: linear-gradient(90deg, #38bdf8 0%, #c084fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Autonomous Intelligence</span> &amp; Enterprise Systems.
+      </h1>
       <p class="hero-lead">
-        <strong>Chief Technology Officer (CTO) @ <a href="https://belvg.com" target="_blank" style="color: var(--orange); text-decoration: none;">BelVG</a></strong> and Head of AI Software Engineering based in Riga, Latvia. Over 15 years architecting enterprise eCommerce ecosystems, high-throughput cloud backends, and autonomous multi-agent systems.
+        <strong>Oleg Semenov (@zyr3x)</strong> — Chief Technology Officer (CTO) @ <a href="https://belvg.com" target="_blank" style="color: var(--orange); text-decoration: none; font-weight: 700;">BelVG</a> and Head of AI Software Engineering based in Riga, Latvia. Over 15 years architecting mission-critical eCommerce ecosystems, Model Context Protocol (MCP) toolchains, and multi-agent AI networks.
       </p>
       <div class="hero-actions">
         <a href="https://belvg.com" target="_blank" class="btn btn-belvg">
@@ -662,27 +669,30 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
           LinkedIn
         </a>
+        <a href="#terminal" class="btn btn-glass" style="font-family: var(--font-mono);">
+          &gt; Open Console
+        </a>
       </div>
     </section>
 
     <!-- Key Telemetry KPIs -->
     <section class="kpi-strip">
-      <div class="kpi-card">
+      <div class="kpi-card glass-card">
         <div class="kpi-val" style="color: var(--cyan);">3,200+</div>
         <div class="kpi-label">Annual Contributions</div>
         <div class="kpi-sub">High-velocity engineering commits across enterprise repositories and OSS.</div>
       </div>
-      <div class="kpi-card">
+      <div class="kpi-card glass-card">
         <div class="kpi-val" style="color: var(--emerald);">15+ Yrs</div>
         <div class="kpi-label">Enterprise Architecture</div>
         <div class="kpi-sub">Scalable eCommerce backends, ERP/CRM bridges, and cloud optimization.</div>
       </div>
-      <div class="kpi-card">
+      <div class="kpi-card glass-card">
         <div class="kpi-val" style="color: var(--amber);">75+</div>
         <div class="kpi-label">Repositories Built</div>
         <div class="kpi-sub">Autonomous AI tools, proxies, SDK integrations, and open-source packages.</div>
       </div>
-      <div class="kpi-card">
+      <div class="kpi-card glass-card">
         <div class="kpi-val" style="color: var(--purple);">AI Agents</div>
         <div class="kpi-label">Multi-Agent Swarms</div>
         <div class="kpi-sub">MCP toolchains, LLM orchestration, and proactive autonomous workflows.</div>
@@ -697,7 +707,7 @@
 
     <section class="bento-grid">
       <!-- BelVG Enterprise Core (Col 8) -->
-      <div class="bento-card col-8" id="belvg">
+      <div class="bento-card col-8 glass-card" id="belvg">
         <div>
           <div class="badge-pill badge-orange">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="9" y1="6" x2="9.01" y2="6"></line><line x1="15" y1="6" x2="15.01" y2="6"></line><line x1="9" y1="10" x2="9.01" y2="10"></line><line x1="15" y1="10" x2="15.01" y2="10"></line><line x1="9" y1="14" x2="9.01" y2="14"></line><line x1="15" y1="14" x2="15.01" y2="14"></line><line x1="9" y1="18" x2="15" y2="18"></line></svg>
@@ -719,7 +729,7 @@
       </div>
 
       <!-- fnxt.app (Col 4) -->
-      <div class="bento-card col-4">
+      <div class="bento-card col-4 glass-card">
         <div>
           <div class="badge-pill badge-cyan">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
@@ -738,7 +748,7 @@
       </div>
 
       <!-- deepmine.by (Col 6) -->
-      <div class="bento-card col-6">
+      <div class="bento-card col-6 glass-card">
         <div>
           <div class="badge-pill badge-purple">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
@@ -758,7 +768,7 @@
       </div>
 
       <!-- doka2.com (Col 6) -->
-      <div class="bento-card col-6">
+      <div class="bento-card col-6 glass-card">
         <div>
           <div class="badge-pill badge-amber">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"></rect><line x1="6" y1="12" x2="10" y2="12"></line><line x1="8" y1="10" x2="8" y2="14"></line><line x1="15" y1="13" x2="15.01" y2="13"></line><line x1="18" y1="11" x2="18.01" y2="11"></line></svg>
@@ -771,7 +781,7 @@
         </div>
         <div class="tag-row">
           <span class="glass-tag">WebSockets</span>
-          <span class="glass-tag">Node.js</span>
+          <span class="tag-row">Node.js</span>
           <span class="glass-tag">Real-Time Sync</span>
           <span class="glass-tag">Canvas</span>
         </div>
@@ -786,7 +796,7 @@
 
     <section class="bento-grid">
       <!-- opengeminiai-studio -->
-      <div class="bento-card col-6">
+      <div class="bento-card col-6 glass-card">
         <div>
           <div class="badge-pill badge-emerald">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
@@ -806,7 +816,7 @@
       </div>
 
       <!-- antigravity-telegram-bridge -->
-      <div class="bento-card col-6">
+      <div class="bento-card col-6 glass-card">
         <div>
           <div class="badge-pill badge-cyan">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" y1="16" x2="8.01" y2="16"></line><line x1="16" y1="16" x2="16.01" y2="16"></line></svg>
@@ -833,7 +843,7 @@
     </div>
 
     <section class="stack-grid">
-      <div class="stack-glass">
+      <div class="stack-glass glass-card">
         <h4>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--cyan);"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3m0 14v3M2 12h3m14 0h3"></path></svg>
           AI, LLMs &amp; Agents
@@ -852,7 +862,7 @@
         </div>
       </div>
 
-      <div class="stack-glass">
+      <div class="stack-glass glass-card">
         <h4>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--purple);"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
           Vector DB &amp; Data
@@ -869,7 +879,7 @@
         </div>
       </div>
 
-      <div class="stack-glass">
+      <div class="stack-glass glass-card">
         <h4>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--cyan);"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
           Cloud &amp; Infrastructure
@@ -888,7 +898,7 @@
         </div>
       </div>
 
-      <div class="stack-glass">
+      <div class="stack-glass glass-card">
         <h4>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--emerald);"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
           Languages &amp; Core
@@ -905,7 +915,7 @@
         </div>
       </div>
 
-      <div class="stack-glass">
+      <div class="stack-glass glass-card">
         <h4>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--orange);"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
           Frameworks &amp; Commerce
@@ -923,32 +933,32 @@
       </div>
     </section>
 
-    <!-- Frosted Glass Telemetry Window -->
-    <div class="terminal-glass">
+    <!-- Clean Frosted Glass Terminal CLI -->
+    <div class="section-wrap" id="terminal">
+      <div class="section-tag">// Interactive Agent Console</div>
+      <h2 class="section-title">Quantum Terminal Telemetry</h2>
+    </div>
+
+    <div class="terminal-glass glass-card">
       <div class="terminal-header">
         <div class="terminal-dots">
           <div class="dot" style="background: #ff5f56;"></div>
           <div class="dot" style="background: #ffbd2e;"></div>
           <div class="dot" style="background: #27c93f;"></div>
         </div>
-        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);">zyr3x@core:~ (production-manifest.json)</div>
-        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--emerald);">● LIVE TELEMETRY</div>
+        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);">zyr3x@core:~ (mcp-agent-v3.2)</div>
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--emerald);">● SECURE CHANNEL</div>
       </div>
-      <div class="terminal-body">
-        <div><span style="color: var(--text-muted); font-style: italic;">// Executive System Profile &amp; Architecture Spec</span></div>
-        <div>{</div>
-        <div style="padding-left: 20px;"><span class="t-key">"identity"</span>: { <span class="t-key">"name"</span>: <span class="t-str">"Oleg Semenov"</span>, <span class="t-key">"handle"</span>: <span class="t-str">"@zyr3x"</span>, <span class="t-key">"location"</span>: <span class="t-str">"Riga, Latvia"</span> },</div>
-        <div style="padding-left: 20px;"><span class="t-key">"executive_roles"</span>: [</div>
-        <div style="padding-left: 40px;"><span class="t-str-alt">"Chief Technology Officer (CTO) @ BelVG"</span>,</div>
-        <div style="padding-left: 40px;"><span class="t-str">"Head of AI Software Engineering &amp; Autonomous Swarms"</span></div>
-        <div style="padding-left: 20px;">],</div>
-        <div style="padding-left: 20px;"><span class="t-key">"production_scale"</span>: {</div>
-        <div style="padding-left: 40px;"><span class="t-key">"experience_years"</span>: <span class="t-num">15</span>,</div>
-        <div style="padding-left: 40px;"><span class="t-key">"annual_contributions"</span>: <span class="t-num">3200</span>,</div>
-        <div style="padding-left: 40px;"><span class="t-key">"core_platforms"</span>: [<span class="t-str">"belvg.com"</span>, <span class="t-str">"fnxt.app"</span>, <span class="t-str">"deepmine.by"</span>, <span class="t-str">"doka2.com"</span>]</div>
-        <div style="padding-left: 20px;">},</div>
-        <div style="padding-left: 20px;"><span class="t-key">"mission"</span>: <span class="t-str">"Engineering autonomous intelligence and scalable architectures at the intersection of AI and commerce."</span></div>
-        <div>}</div>
+      <div class="terminal-body" id="tLog">
+        <div><span style="color: var(--cyan); font-weight: bold;">Zyr3x Quantum Telemetry CLI [Version 3.2.0-release]</span></div>
+        <div>Type <span style="color: var(--amber); font-weight: bold;">'help'</span> to explore systems, platforms, or architecture.</div>
+        <br>
+        <div><span style="color: var(--purple);">[SYSTEM]</span> Identity: Oleg Semenov | CTO @ BelVG | Head of AI Software Engineering</div>
+        <div><span style="color: var(--emerald);">[STATUS]</span> All agent nodes, MCP toolchains, and enterprise architectures operating at nominal capacity.</div>
+      </div>
+      <div class="terminal-input-bar">
+        <span class="t-prompt">zyr3x@core:~$</span>
+        <input type="text" class="t-input" id="tInput" placeholder="try 'projects', 'belvg', 'stack', 'contact' or 'clear'..." autofocus>
       </div>
     </div>
 
@@ -960,7 +970,7 @@
   </div>
 
   <script>
-    // Lightweight smooth constellation particles
+    // 1. Lightweight smooth constellation particles
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
     let width, height, particles = [];
@@ -1018,6 +1028,80 @@
       requestAnimationFrame(animate);
     }
     animate();
+
+    // 2. Interactive Terminal CLI
+    const tLog = document.getElementById('tLog');
+    const tInput = document.getElementById('tInput');
+
+    const CLI_COMMANDS = {
+      help: () => `
+Available Commands:
+  • <span style="color: var(--cyan);">projects</span>   - List flagship production platforms (fnxt.app, deepmine.by, doka2.com)
+  • <span style="color: var(--orange);">belvg</span>      - View BelVG enterprise eCommerce & architecture scope
+  • <span style="color: var(--purple);">tooling</span>    - Inspect open-source AI proxies and Antigravity bridges
+  • <span style="color: var(--emerald);">stack</span>      - Display complete architecture & technical matrix
+  • <span style="color: var(--amber);">contact</span>    - View verified LinkedIn, GitHub & business channels
+  • <span style="color: var(--cyan);">clear</span>      - Clear terminal screen`,
+
+      projects: () => `
+<span style="color: var(--cyan); font-weight: bold;">[FLAGSHIP PLATFORMS]</span>
+  • <a href="https://fnxt.app" target="_blank" style="color: var(--cyan);">fnxt.app</a>       - Next-Gen Autonomous AI Automation & Workflow Execution Platform
+  • <a href="https://deepmine.by" target="_blank" style="color: var(--purple);">deepmine.by</a>   - Media Intelligence, PyTorch & Whisper Speech Synthesis
+  • <a href="https://doka2.com" target="_blank" style="color: var(--amber);">doka2.com</a>      - Interactive Gaming & Real-Time WebSocket Network
+  • <a href="https://belvg.com" target="_blank" style="color: var(--orange);">belvg.com</a>      - High-Load Enterprise eCommerce Architecture & Microservices`,
+
+      belvg: () => `
+<span style="color: var(--orange); font-weight: bold;">[BELVG ENTERPRISE CORE]</span>
+  Role: Chief Technology Officer (CTO)
+  Domain: Enterprise eCommerce (Magento 2, Sylius, Prestashop, Custom Microservices)
+  Scale: 15+ years delivering high-throughput retail platforms and ERP/CRM integrations
+  URL: <a href="https://belvg.com" target="_blank" style="color: var(--orange);">https://belvg.com</a>`,
+
+      tooling: () => `
+<span style="color: var(--emerald); font-weight: bold;">[OPEN SOURCE & AI BRIDGES]</span>
+  • <a href="https://github.com/zyr3x/opengeminiai-studio" target="_blank" style="color: var(--emerald);">opengeminiai-studio</a>       - Seamless Gemini API proxy for OpenAI clients
+  • <a href="https://github.com/zyr3x/antigravity-telegram-bridge" target="_blank" style="color: var(--cyan);">antigravity-telegram-bridge</a> - Bidirectional Telegram interface for Antigravity AI agents`,
+
+      stack: () => `
+<span style="color: var(--cyan); font-weight: bold;">[ARCHITECTURE TOOLBELT]</span>
+  • AI & Agents: Google Gemini, Vertex AI, Claude, OpenAI, FastMCP, Antigravity, PyTorch, LangChain
+  • Vector & Data: ChromaDB, Qdrant, Elasticsearch, OpenSearch, PostgreSQL (pgvector), Redis, MySQL
+  • Cloud & Infra: GCP, AWS, Cloudflare, Docker, Kubernetes, LXD/LXC, Nginx, RabbitMQ, Linux
+  • Languages: Python, TypeScript, JavaScript, PHP, Go, Bash, C/C++, SQL`,
+
+      contact: () => `
+<span style="color: var(--amber); font-weight: bold;">[CHANNELS]</span>
+  • LinkedIn: <a href="https://www.linkedin.com/in/oleg-semenov-belvg/" target="_blank" style="color: var(--cyan);">https://www.linkedin.com/in/oleg-semenov-belvg/</a>
+  • GitHub:   <a href="https://github.com/zyr3x" target="_blank" style="color: var(--cyan);">https://github.com/zyr3x</a>
+  • Company:  <a href="https://belvg.com" target="_blank" style="color: var(--orange);">https://belvg.com</a>
+  • Location: Riga, Latvia 🇱🇻`
+    };
+
+    tInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const cmd = tInput.value.trim().toLowerCase();
+        tInput.value = '';
+
+        const line = document.createElement('div');
+        line.innerHTML = `<span class="t-prompt">zyr3x@core:~$</span> <span style="color:#fff;">${cmd}</span>`;
+        tLog.appendChild(line);
+
+        if (cmd === 'clear') {
+          tLog.innerHTML = '';
+        } else if (CLI_COMMANDS[cmd]) {
+          const res = document.createElement('div');
+          res.className = 'cli-output-line';
+          res.innerHTML = CLI_COMMANDS[cmd]();
+          tLog.appendChild(res);
+        } else if (cmd !== '') {
+          const err = document.createElement('div');
+          err.className = 'cli-output-line';
+          err.innerHTML = `<span style="color: #f43f5e;">Command not recognized: '${cmd}'. Type 'help' for available commands.</span>`;
+          tLog.appendChild(err);
+        }
+        tLog.scrollTop = tLog.scrollHeight;
+      }
+    });
   </script>
 </body>
 </html>
